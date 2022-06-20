@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="id.pritus.dresta.umrah">
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- <uses-permission android:name="android.permission.CALL_PHONE" /> -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <meta-data android:name="com.onesignal.NotificationOpened.DEFAULT" android:value="DISABLE" />
+        <activity android:name=".ManasikActivityNew"></activity>
+        <activity android:name=".LupassActivity" />
+        <activity
+            android:name=".DetailBeritaActivity"
+            android:label="@string/title_activity_detail_berita"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ArtikelActivity"
+            android:label="@string/title_activity_artikel"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RiwayatActivity"
+            android:label="@string/title_activity_riwayat"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/title_activity_about"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AkunActivity"
+            android:label="@string/title_activity_akun"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".JadwalActivity"
+            android:label="@string/title_activity_jadwal"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DetailProgramActivity"
+            android:label="@string/title_activity_detail_program"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProgramActivity"
+            android:label="@string/title_activity_program"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DetailItineraryActivity"
+            android:label="@string/title_activity_detail_itinerary"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ItineraryActivity"
+            android:label="@string/title_activity_itinerary"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TesActivity"
+            android:label="@string/title_activity_tes"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RegisterJamaahActivity"
+            android:label="@string/title_activity_register_jamaah"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PilihActivity"
+            android:label="@string/title_activity_pilih"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".WActivity"
+            android:label="@string/title_activity_w"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DoaActivity"
+            android:label="@string/title_activity_doa"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ManasikActivity"
+            android:label="@string/title_activity_manasik"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LegalitasActivity"
+            android:label="@string/title_activity_legalitas"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".WebActivity" />
+        <activity
+            android:name=".DetailActivity"
+            android:label="@string/title_activity_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProdukActivity"
+            android:label="@string/title_activity_produk"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".salat.SalatActivity"
+            android:label="@string/title_activity_salat"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".ToolsActivity" />
+        <activity android:name=".WelcomeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="Login" />
+        <activity android:name=".slider.customize.CustomizeActivity" />
+        <activity
+            android:name=".RegisterActivity"
+            android:label="Register" />
+        <activity android:name=".TestimoniActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintcontent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00C4C4C4"
+        app:layout_constraintBottom_toTopOf="@id/buttondaftar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/greycustom2"
+            android:overScrollMode="never"
+            android:fillViewport="true"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+
+                    android:id="@+id/Imvfoto_produk"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@drawable/shadow_200"
+                    android:scaleType="fitXY"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic[14]" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/Txvnama_produk"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/lato_bold"
+                        android:gravity="center"
+                        android:text="Umroh"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/Txvharga_coret"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/strikethrough"
+                        android:fontFamily="@font/lato_black"
+                        android:textColor="#706F6F"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/Txvharga_produk"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_bold"
+                        android:gravity="center"
+                        android:text="Rp. 29.000.000"
+                        android:textColor="#D32F2F"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/TxvSisaSeat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/lato_black"
+                        android:gravity="center"
+                        android:text="Sisa seat : 10"
+                        android:textColor="#424242"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/corner_rad"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="20dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="20dp">
+
+                    <TextView
+                        android:id="@+id/textView20"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/lato"
+                        android:text="Deskripsi"
+                        android:textColor="#8F8F8F"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/Txvdeskripsi_produk"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato"
+                        android:padding="10dp"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:textSize="13sp" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp">
+
+                        <Button
+                            android:id="@+id/expandableButton1"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/corner_rad"
+                            android:backgroundTint="#00BCD4"
+                            android:drawableEnd="@drawable/ic_arrow_drop_down_white_24dp"
+                            android:onClick="expandableButton1"
+                            android:paddingEnd="10dp"
+                            android:text="Fasilitas"
+                            android:textColor="#fff" />
+
+                        <Button
+                            android:id="@+id/expandableButton2"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/expandableLayout1"
+                            android:background="@drawable/corner_rad"
+                            android:backgroundTint="#00BCD4"
+                            android:drawableRight="@drawable/ic_arrow_drop_down_white_24dp"
+                            android:onClick="expandableButton2"
+                            android:paddingRight="10dp"
+                            android:text="Hak Calon Jamaah"
+                            android:textColor="#fff" />
+
+
+                        <Button
+                            android:id="@+id/expandablebutton3"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/expandableLayout2"
+                            android:background="@drawable/corner_rad"
+                            android:backgroundTint="#00BCD4"
+                            android:drawableRight="@drawable/ic_arrow_drop_down_white_24dp"
+                            android:onClick="expandableButton3"
+                            android:paddingRight="10dp"
+                            android:text="Syarat &amp; Ketentuan"
+                            android:textColor="#fff" />
+
+                        <Button
+                            android:id="@+id/expandablebuttonItinerary"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/expandableLayout3"
+                            android:background="@drawable/corner_rad"
+                            android:backgroundTint="#00BCD4"
+                            android:drawableRight="@drawable/ic_arrow_drop_down_white_24dp"
+                            android:onClick="expandableButtonItin"
+                            android:paddingRight="10dp"
+                            android:text="Itinerary"
+                            android:textColor="#fff"
+                            android:visibility="gone" />
+
+                        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                            android:id="@+id/expandableLayout1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/expandableButton1"
+                            android:layout_alignStart="@+id/expandableButton1"
+                            android:layout_alignEnd="@+id/expandableButton1"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginEnd="4dp"
+                            android:background="#B3E5FC"
+                            android:padding="16dp"
+                            app:ael_duration="400"
+                            app:ael_expanded="true"
+                            app:ael_interpolator="bounce"
+                            app:ael_orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/Txvfasilitas"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#585858" />
+                        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+                        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                            android:id="@+id/expandableLayout3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/expandablebutton3"
+                            android:layout_alignStart="@id/expandablebutton3"
+                            android:layout_alignEnd="@id/expandablebutton3"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginEnd="4dp"
+                            android:background="#B3E5FC"
+                            android:padding="16dp"
+                            app:ael_duration="400"
+                            app:ael_expanded="true"
+                            app:ael_interpolator="bounce"
+                            app:ael_orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/Txvsyarat_ketentuan"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#585858" />
+                        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+
+                        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                            android:id="@+id/expandableLayout2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/expandableButton2"
+                            android:layout_alignStart="@id/expandableButton2"
+                            android:layout_alignEnd="@id/expandableButton2"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginEnd="4dp"
+                            android:background="#B3E5FC"
+                            android:padding="16dp"
+                            app:ael_duration="400"
+                            app:ael_expanded="true"
+                            app:ael_interpolator="bounce"
+                            app:ael_orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/Txvhak_calon_jamaah"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#585858" />
+                        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textView27"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@color/colorWhite"-->
+<!--                    android:fontFamily="@font/lato"-->
+<!--                    android:paddingStart="20dp"-->
+<!--                    android:text="Itinerary"-->
+<!--                    android:textColor="#747373"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:visibility="gone" />-->
+
+<!--                <id.pritus.dresta.umrah.ExpandableHeightGridView-->
+<!--                    android:id="@+id/GvItin"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="#FFF"-->
+<!--                    android:isScrollContainer="false"-->
+<!--                    android:scrollbarThumbVertical="@null"-->
+<!--                    android:scrollbarThumbHorizontal="@null"-->
+<!--                    android:fadeScrollbars="true"-->
+<!--                    android:numColumns="1"-->
+<!--                    android:paddingStart="12dp"-->
+<!--                    android:paddingEnd="12dp"-->
+<!--                    android:paddingBottom="8dp"-->
+<!--                    android:nestedScrollingEnabled="false"-->
+<!--                    android:stretchMode="columnWidth" />-->
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/CLshimmer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00C4C4C4"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/buttondaftar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout">
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_produk_container"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            shimmer:duration="600">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <View
+                        android:layout_width="150dp"
+                        android:layout_height="16dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@drawable/corner_rad"
+                        android:backgroundTint="#D1D1D1"
+                        android:backgroundTintMode="src_atop" />
+
+                    <View
+                        android:layout_width="120dp"
+                        android:layout_height="16dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/corner_rad"
+                        android:backgroundTint="#D1D1D1"
+                        android:backgroundTintMode="src_atop" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/corner_rad"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="20dp">
+
+                    <View
+                        android:layout_width="100dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/corner_rad"
+                        android:backgroundTint="#D1D1D1"
+                        android:backgroundTintMode="src_atop" />
+
+                    <View
+                        android:id="@+id/view3"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/corner_rad"
+                        android:backgroundTint="#D1D1D1"
+                        android:backgroundTintMode="src_atop" />
+
+                    <View
+                        android:id="@+id/view4"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/corner_rad"
+                        android:backgroundTint="#D1D1D1"
+                        android:backgroundTintMode="src_atop" />
+
+                    <View
+                        android:id="@+id/view5"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/corner_rad"
+                        android:backgroundTint="#D1D1D1"
+                        android:backgroundTintMode="src_atop" />
+
+                    <View
+                        android:id="@+id/view6"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/corner_rad"
+                        android:backgroundTint="#D1D1D1"
+                        android:backgroundTintMode="src_atop" />
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/thumbnail"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#D1D1D1"
+                    android:padding="5dp"
+                    android:scaleType="fitXY" />
+
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/buttondaftar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:fontFamily="@font/lato_black"
+        android:text="Daftar"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/included_nocon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="60dp"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include
+
+            layout="@layout/noconn_layout" />
+    </LinearLayout>
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Toolbar -->
+
+        <Button
+            android:id="@+id/btBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@drawable/ic_left"
+            android:gravity="start|center_vertical"
+            android:text="Home"
+            android:textColor="@color/txWhite" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/expandButton"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:backgroundTint="#4FC3F7"
+            android:backgroundTintMode="src_atop"
+            android:drawableEnd="@drawable/ic_down"
+            android:drawableBottom="@android:drawable/divider_horizontal_dark"
+            android:gravity="start|center_vertical"
+            android:onClick="expandableButton1"
+            android:padding="5dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="10dp"
+            android:text="Apa saja perlengkapan yg kamu dapatkan dari Al Ma'wa NU Tour &amp; Travel ?"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="13sp" />
+
+        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+            android:id="@+id/expandableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/expandButton"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:background="#81D4FA"
+            android:padding="16dp"
+            app:ael_duration="400"
+            app:ael_expanded="false"
+            app:ael_interpolator="linearOutSlowIn"
+            app:ael_orientation="vertical">
+
+            <TextView
+                android:id="@+id/TxvJawaban"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="Perlengkapan yg anda dapatkan dari al ma'wa NU ialah (putra) Ihrom, sabuk, buku panduan, koper, Tas sandal, Tas pasport , Asuransi dan Manasik umroh 3x, sedangkan (putri) Bergo, kerudung, buku panduan, asuransi, Tas koper, Tas sandal, Tas pasport dan manasik Umroh 3x"
+                android:textColor="#585858" />
+        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/shadow_400white"
+        android:paddingTop="40dp"
+        android:paddingBottom="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="30dp"
+
+            android:paddingRight="30dp">
+
+            <Button
+                android:id="@+id/btnDaftar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_button"
+                android:backgroundTint="#FFCA28"
+                android:padding="10dp"
+                android:shadowColor="@android:color/transparent"
+                android:text="Daftar"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TilFotoAgen" />
+
+            <LinearLayout
+                android:id="@+id/TilJenisKelamin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:textColorHint="@color/colorPrimary"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TilTanggalLahir">
+
+
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jenis Kelamin"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/RgJenisKelamin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/RLaki"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="Laki-laki"
+                        android:textSize="10sp" />
+
+                    <RadioButton
+                        android:id="@+id/Rperempuan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Perempuan"
+                        android:textSize="10sp" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/lato_bold"
+                android:text="Daftar"
+                android:textColor="@color/colorPrimary"
+                android:textSize="22sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/link_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:clickable="true"
+                android:gravity="center"
+                android:linksClickable="true"
+                android:text="Sudah Punya Akun? Login"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnDaftar" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.07" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TilAgenReferensi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorPrimary"
+                app:layout_constraintBottom_toTopOf="@id/TilNamaLengkap"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/guideline18">
+
+                <EditText
+                    android:id="@+id/EtAgenReferensi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shadow"
+                    android:fontFamily="@font/lato"
+                    android:hint="Agen Referensi"
+                    android:inputType="text"
+                    android:padding="15dp"
+                    android:textColor="#585858"
+                    android:textColorHighlight="@color/colorPrimary"
+                    android:textColorHint="#247F8D"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TilNamaLengkap"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:textColorHint="@color/colorPrimary"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TilAgenReferensi">
+
+                <EditText
+                    android:id="@+id/EtNamaLengkap"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shadow"
+                    android:fontFamily="@font/lato"
+                    android:hint="Nama Lengkap"
+                    android:inputType="text"
+                    android:padding="15dp"
+                    android:textColor="#585858"
+                    android:textColorHighlight="@color/colorPrimary"
+                    android:textColorHint="#247F8D"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TilTempatLahir"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:textColorHint="@color/colorPrimary"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TilNamaLengkap">
+
+                <EditText
+                    android:id="@+id/EtTempatLahir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shadow"
+                    android:fontFamily="@font/lato"
+                    android:hint="Tempat Lahir"
+                    android:inputType="text"
+                    android:padding="15dp"
+                    android:textColor="#585858"
+                    android:textColorHighlight="@color/colorPrimary"
+                    android:textColorHint="#247F8D"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/TilTanggalLahir"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColorHint="@color/colorPrimary"
+
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TilTempatLahir">
+
+                <EditText
+                    android:id="@+id/EtTanggalLahir"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/shadow"
+                    android:clickable="false"
+                    android:enabled="false"
+                    android:fontFamily="@font/lato"
+                    android:hint="Tanggal Lahir"
+                    android:inputType="date"
+                    android:padding="15dp"
+                    android:textColor="#585858"
+                    android:textColorHighlight="@color/colorPrimary"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/BtTanggalLahir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+                    android:backgroundTint="#FFECB3"
+                    android:text="Pilih"
+                    android:textAllCaps="false" />
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TilAlamat"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="8dp"
+                android:textColorHint="@color/colorPrimary"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TilJenisKelamin">
+
+                <EditText
+                    android:id="@+id/EtAlamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="85dp"
+                    android:background="@drawable/shadow"
+                    android:fontFamily="@font/lato"
+                    android:hint="Alamat"
+                    android:inputType="textMultiLine|text"
+                    android:padding="15dp"
+                    android:textColor="#585858"
+                    android:textColorHighlight="@color/colorPrimary"
+                    android:textColorHint="#247F8D"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TilNomorHp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:textColorHint="@color/colorPrimary"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TilAlamat">
+
+                <EditText
+                    android:id="@+id/EtNomorHp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shadow"
+                    android:fontFamily="@font/lato"
+                    android:hint="Nomor HP"
+                    android:inputType="number|phone"
+                    android:padding="15dp"
+                    android:textColor="#585858"
+                    android:textColorHighlight="@color/colorPrimary"
+                    android:textColorHint="#247F8D"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TilPekerjaan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColorHint="@color/colorPrimary"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TilNomorHp">
+
+                <EditText
+                    android:id="@+id/Etpekerjaan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shadow"
+                    android:fontFamily="@font/lato"
+                    android:hint="Pekerjaan"
+                    android:inputType="text"
+                    android:padding="15dp"
+                    android:textColor="#585858"
+                    android:textColorHighlight="@color/colorPrimary"
+                    android:textColorHint="#247F8D"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TilEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:textColorHint="@color/colorPrimary"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TilPekerjaan">
+
+                <EditText
+                    android:id="@+id/EtEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shadow"
+                    android:fontFamily="@font/lato"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:padding="15dp"
+                    android:textColor="#585858"
+                    android:textColorHighlight="@color/colorPrimary"
+                    android:textColorHint="#247F8D"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TilNomorRekening"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:textColorHint="@color/colorPrimary"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TilEmail">
+
+                <EditText
+                    android:id="@+id/EtNomorRekening"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shadow"
+                    android:fontFamily="@font/lato"
+                    android:hint="Nomor Rekening"
+                    android:inputType="number"
+                    android:padding="15dp"
+                    android:textColor="#585858"
+                    android:textColorHighlight="@color/colorPrimary"
+                    android:textColorHint="#247F8D"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TilBank"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:textColorHint="@color/colorPrimary"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TilNomorRekening">
+
+                <EditText
+                    android:id="@+id/EtBank"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shadow"
+                    android:fontFamily="@font/lato"
+                    android:hint="Bank"
+                    android:inputType="text"
+                    android:padding="15dp"
+                    android:textColor="#585858"
+                    android:textColorHighlight="@color/colorPrimary"
+                    android:textColorHint="#247F8D"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TilUsername"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:textColorHint="@color/colorPrimary"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/TilBank">
+
+                <EditText
+                    android:id="@+id/EtUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shadow"
+                    android:fontFamily="@font/lato"
+                    android:hint="Username"
+                    android:inputType="text"
+                    android:padding="15dp"
+                    android:textColor="#585858"
+                    android:textColorHighlight="@color/colorPrimary"
+                    android:textColorHint="#247F8D"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TilPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:textColorHint="@color/colorPrimary"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TilUsername">
+
+                <EditText
+                    android:id="@+id/EtPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shadow"
+                    android:fontFamily="@font/lato"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:padding="15dp"
+                    android:textColor="#585858"
+                    android:textColorHighlight="@color/colorPrimary"
+                    android:textColorHint="#247F8D"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/TilCPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:textColorHint="@color/colorPrimary"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TilPassword">
+
+                <EditText
+                    android:id="@+id/EtCPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shadow"
+                    android:fontFamily="@font/lato"
+                    android:hint="Konfirmasi Password"
+                    android:inputType="textPassword"
+                    android:padding="15dp"
+                    android:textColor="#585858"
+                    android:textColorHighlight="@color/colorPrimary"
+                    android:textColorHint="#247F8D"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <LinearLayout
+                android:id="@+id/TilFotoKtp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TilCPassword">
+
+                <Button
+                    android:id="@+id/btFotoKtpAgen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0"
+                    android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+                    android:drawableStart="@android:drawable/ic_menu_upload"
+                    android:text="Upload Foto KTP"
+                    android:textColor="#6F6F6F"></Button>
+
+                <ImageView
+                    android:id="@+id/IvFotoKtpAgen"
+                    android:layout_width="fill_parent"
+                    android:layout_height="200dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"></ImageView>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/TilFotoAgen"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TilFotoKtp">
+
+                <Button
+                    android:id="@+id/btFotoAgen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0"
+                    android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+                    android:drawableStart="@android:drawable/ic_menu_upload"
+                    android:text="Upload Pas Foto"
+                    android:textColor="#6F6F6F"></Button>
+
+                <ImageView
+                    android:id="@+id/IvFotoAgen"
+                    android:layout_width="fill_parent"
+                    android:layout_height="200dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"></ImageView>
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

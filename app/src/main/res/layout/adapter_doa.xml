@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/shadow">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="true"
+        android:fillViewport="true">
+        <androidx.cardview.widget.CardView
+            app:cardBackgroundColor="#fff"
+            app:cardCornerRadius="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/Txvjuduldoa"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_black"
+                android:gravity="center|center_vertical"
+                android:text="Judul"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@id/Txvbacaandoa"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/Txvbacaandoa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="casual"
+                android:includeFontPadding="false"
+                android:text="لَبَّيْكَ اللّهُمَّ لَبَّيْكَ لَبَّيْكَ لاَشَرِيْكَ لَكَ لَبَّيْكَ اِنَّ الْحَمْدَ وَالنّعْمَةَ لَكَ وَالْمُلْكَ لاَشَرِيْكَ لَكَ اَللّهُمَّ صَلّﻭَسَلّمْ عَلى سَيّدِنَا مُحَمَّدٍ وَعَلى آلِ سَيّدِنَا مُحَمَّدٍ اَللّهُمَّ اِنَّا نَسْئَلُكَ رِضَاكَ وَالْجَنَّةَ وَنَعُوْذُبِكَ مِنْ سَخَتِكَ وَالنَّارِ. رَبَّنَا آتِنَا فِى الدُّنْيَا حَسَنَةً وَفِى اْلاَخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ"
+                android:textColor="#303030"
+                android:textSize="22sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/Txvjuduldoa" />
+
+            <TextView
+                android:id="@+id/imageView11"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:background="@drawable/corner_rad"
+                android:backgroundTint="#F7F7F7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/Txvbacaandoa" />
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Artinya"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Txvbacaandoa" />
+
+            <TextView
+                android:id="@+id/Txvartidoa"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/lato"
+                android:text="TextView"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+    </ScrollView>
+
+
+</FrameLayout>
