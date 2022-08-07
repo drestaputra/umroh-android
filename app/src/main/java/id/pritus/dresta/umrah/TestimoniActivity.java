@@ -34,6 +34,7 @@ import org.json.JSONArray;
 import java.text.NumberFormat;
 import java.util.List;
 
+import id.pritus.dresta.umrah.model.GeneralResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -49,9 +50,13 @@ import retrofit2.http.Query;
 public class TestimoniActivity extends AppCompatActivity {
 
     interface MyAPIService {
-        @GET("android/testimoni/tampil")
-        Call<List<Testimoni>> getTestimoni();
+        @GET("testimoni")
+        Call<GeneralResponse> getTestimoni();
     }
+    private MyAPIService myAPIService;
+    private LinearLayout noconnlayout;
+    private TextView textView;
+
 
     private ShimmerFrameLayout mShimmerViewContainer;
     @Override
@@ -68,32 +73,34 @@ public class TestimoniActivity extends AppCompatActivity {
             }
         });
         mShimmerViewContainer = findViewById(R.id.shimmer_view_container);
-        final TextView textView= (TextView) findViewById(R.id.textPF);
-        final LinearLayout noconnlayout=(LinearLayout) findViewById(R.id.included_nocon);
+        textView= (TextView) findViewById(R.id.textPF);
+        noconnlayout=(LinearLayout) findViewById(R.id.included_nocon);
         noconnlayout.setVisibility(View.GONE);
 
+        myAPIService = RetrofitClientInstance.getRetrofitInstance().create(MyAPIService.class);
 
+        requestApi();
 
-
-
-        MyAPIService myAPIService = RetrofitClientInstance.getRetrofitInstance().create(MyAPIService.class);
-//        Integer id_pengguna = getArguments().getInt("position") + 1;
-
-        Call<List<Testimoni>> call = myAPIService.getTestimoni();
-        call.enqueue(new Callback<List<Testimoni>>() {
+    }
+    private void requestApi(){
+        Call<GeneralResponse> call = myAPIService.getTestimoni();
+        call.enqueue(new Callback<GeneralResponse>() {
 
             @Override
-            public void onResponse(Call<List<Testimoni>> call, Response<List<Testimoni>> response) {
+            public void onResponse(Call<GeneralResponse> call, Response<GeneralResponse> response) {
+                mShimmerViewContainer.stopShimmerAnimation();
+                mShimmerViewContainer.setVisibility(View.GONE);
                 if (response.body() != null) {
-                    mShimmerViewContainer.stopShimmerAnimation();
-                    mShimmerViewContainer.setVisibility(View.GONE);
-                    populateGridView(response.body());
+                    if (response.body().getData() != null){
+                        List<Testimoni> testimonis = response.body().getData(Testimoni.class);
+                        populateGridView(testimonis);
+                    }
                 }else{
                     textView.setText("Testimoni belum ada");
                 }
             }
             @Override
-            public void onFailure(Call<List<Testimoni>> call, Throwable throwable) {
+            public void onFailure(Call<GeneralResponse> call, Throwable throwable) {
                 mShimmerViewContainer.stopShimmerAnimation();
                 mShimmerViewContainer.setVisibility(View.GONE);
                 noconnlayout.setVisibility(View.VISIBLE);
@@ -101,14 +108,11 @@ public class TestimoniActivity extends AppCompatActivity {
                 btRefresh.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intentcart = new Intent(TestimoniActivity.this, TestimoniActivity.class);
-                        intentcart.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intentcart);
+                        requestApi();
                     }
                 });
             }
         });
-
     }
     @Override
     public void onResume() {
@@ -250,7 +254,7 @@ public class TestimoniActivity extends AppCompatActivity {
             this.isi_testimoni= isi_testimoni;
         }
         public String getFoto_tester() {
-            String foto_tester2="https://admin.biroumrohcilacap.com/assets/img/testimoni/"+foto_tester;
+            String foto_tester2=foto_tester;
             return foto_tester2;
         }
     }

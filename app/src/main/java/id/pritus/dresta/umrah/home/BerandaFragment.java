@@ -3,48 +3,26 @@ package id.pritus.dresta.umrah.home;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Handler;
 import android.os.Parcelable;
-import android.os.StrictMode;
-import android.transition.Slide;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.google.android.material.tabs.TabLayout;
 import com.google.gson.annotations.SerializedName;
 import com.rd.PageIndicatorView;
 import com.rd.animation.type.AnimationType;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -52,11 +30,9 @@ import java.util.TimerTask;
 
 import id.pritus.dresta.umrah.AkunActivity;
 import id.pritus.dresta.umrah.ArtikelActivity;
-import id.pritus.dresta.umrah.ItineraryActivity;
 import id.pritus.dresta.umrah.JadwalActivity;
 import id.pritus.dresta.umrah.LegalitasActivity;
 import id.pritus.dresta.umrah.LoginActivity;
-import id.pritus.dresta.umrah.ManasikActivity;
 import id.pritus.dresta.umrah.ManasikActivityNew;
 import id.pritus.dresta.umrah.PrefManager;
 import id.pritus.dresta.umrah.ProdukActivity;
@@ -65,20 +41,13 @@ import id.pritus.dresta.umrah.ProgramActivity;
 import id.pritus.dresta.umrah.R;
 import id.pritus.dresta.umrah.RetrofitClientInstance;
 import id.pritus.dresta.umrah.TestimoniActivity;
-import id.pritus.dresta.umrah.WActivity;
-import id.pritus.dresta.umrah.WebActivity;
+import id.pritus.dresta.umrah.model.GeneralPaginationResponse;
 import id.pritus.dresta.umrah.salat.SalatActivity;
-import id.pritus.dresta.umrah.slider.customize.CustomizeActivity;
 import id.pritus.dresta.umrah.slider.data.Customization;
-import id.pritus.dresta.umrah.slider.home.HomeAdapter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
-
-import static android.app.Activity.RESULT_OK;
 
 
 public class BerandaFragment extends Fragment {
@@ -103,8 +72,8 @@ public class BerandaFragment extends Fragment {
     }
 
     interface MyAPIService {
-        @GET("android/slider/tampil")
-        Call<List<Slider>> getSlider();
+        @GET("slider")
+        Call<GeneralPaginationResponse> getSlider();
     }
 
 
@@ -190,7 +159,7 @@ public class BerandaFragment extends Fragment {
         }else{
             LbtAkun.setVisibility(View.GONE);
         }
-        LbtTestimoni = (LinearLayout) view.findViewById(R.id.LbtTestimoni);
+        LbtTestimoni =  view.findViewById(R.id.LbtTestimoni);
         LbtTestimoni.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -198,7 +167,7 @@ public class BerandaFragment extends Fragment {
                 startActivity(ITestimoni);
             }
         });
-        LbtSholat = (LinearLayout) view.findViewById(R.id.LbtSholat);
+        LbtSholat = view.findViewById(R.id.LbtSholat);
         LbtSholat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -206,7 +175,7 @@ public class BerandaFragment extends Fragment {
                 startActivity(Ishalat);
             }
         });
-        LbtLegalitas = (LinearLayout) view.findViewById(R.id.LbtLegalitas);
+        LbtLegalitas =  view.findViewById(R.id.LbtLegalitas);
         LbtLegalitas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -216,19 +185,20 @@ public class BerandaFragment extends Fragment {
         });
         MyAPIService myAPIService = RetrofitClientInstance.getRetrofitInstance().create(MyAPIService.class);
 
-        Call<List<Slider>> call = myAPIService.getSlider();
-        call.enqueue(new Callback<List<Slider>>() {
+        Call<GeneralPaginationResponse> call = myAPIService.getSlider();
+        call.enqueue(new Callback<GeneralPaginationResponse>() {
             @Override
-            public void onResponse(Call<List<Slider>> call, Response<List<Slider>> response) {
+            public void onResponse(Call<GeneralPaginationResponse> call, Response<GeneralPaginationResponse> response) {
                 if (response.body() != null) {
-                    init(response.body());
+                    List<Slider> sliders = response.body().getData(Slider.class);
+                    init(sliders);
                 }else{
 //                    textView.setText("Testimoni belum ada");
                 }
             }
             @Override
-            public void onFailure(Call<List<Slider>> call, Throwable throwable) {
-//                Toast.makeText(, "", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<GeneralPaginationResponse> call, Throwable throwable) {
+
             }
         });
         return view;
@@ -236,7 +206,7 @@ public class BerandaFragment extends Fragment {
 
     private void init(List<Slider> sliderList) {
 
-        mPager = (ViewPager) getView().findViewById(R.id.viewPager);
+        mPager = getView().findViewById(R.id.viewPager);
         mPager.setAdapter(new SlidingImage_Adapter(getActivity().getApplicationContext(), sliderList));
 
         final float density = getResources().getDisplayMetrics().density;
@@ -316,8 +286,7 @@ public class BerandaFragment extends Fragment {
         }
 
         public String getFoto_slider() {
-            String foto_slider2 = "https://admin.biroumrohcilacap.com/assets/img/slider/" + foto_slider;
-            return foto_slider2;
+            return foto_slider;
         }
     }
 
@@ -351,7 +320,6 @@ public class BerandaFragment extends Fragment {
             assert imageLayout != null;
             final ImageView imageView = (ImageView) imageLayout
                     .findViewById(R.id.image);
-
 
             Glide.with(context)
                     .load(sliders.get(position).getFoto_slider())

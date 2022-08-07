@@ -1,0 +1,14 @@
+
+P
+java:S1118":Add a private constructor to hide the implicit public one.(¶—çå
+M
+java:S1854"8Remove this useless assignment to local variable "item".(Äó˜u
+A
+java:S3011",This accessibility update should be removed.(ÏËÀ
+G
+java:S3011",This accessibility bypass should be removed.(†Ó÷ûùÿÿÿÿ
+>
+java:S1481")Remove this unused "item" local variable.(Äó˜u
+Q	java:S125"<This block of commented-out lines of code should be removed.(¦‚Ä‡
+W
+java:S1128	"<Remove this unused import 'android.annotation.SuppressLint'.(ÕƒóÏûÿÿÿÿ

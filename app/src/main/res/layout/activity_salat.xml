@@ -86,7 +86,6 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato_black"
             android:gravity="center"
-            android:text="Kamis, 29 Agustus 2019"
             android:textColor="#FBF12D"
             android:textSize="14sp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -100,24 +99,25 @@
             android:fontFamily="@font/lato_black"
             android:gravity="center"
             android:maxLines="2"
-            android:text="Cilacap"
             android:textColor="#FBF12D"
             android:textSize="12sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/TxvWaktu" />
 
-        <TextView
+        <TextClock
             android:id="@+id/TxvJam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:fontFamily="@font/lato_black"
-            android:text="20:00"
             android:textColor="@color/txWhite"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@id/guideline14"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintRight_toRightOf="parent"
+            android:format12Hour="hh:mm:ss"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.Guideline

@@ -18,6 +18,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -29,6 +30,7 @@ import java.text.NumberFormat;
 import java.util.List;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
+import id.pritus.dresta.umrah.model.GeneralSingleResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,21 +43,26 @@ import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 
 public class DetailProgramActivity extends AppCompatActivity {
     ExpandableRelativeLayout expandableLayout1, expandableLayout2, expandableLayout3, expandableLayout4, expandableLayout5;
-    TextView TxvNamaProgram,TxvDeskrisiProgram,TxvCaraPendaftaran,TxvKetentuan;
+    TextView TxvNamaProgram,TxvDeskrisiProgram;
+    WebView TxvKetentuan, TxvCaraPendaftaran;
     private ShimmerFrameLayout mShimmerViewContainer;
     private PrefManager prefManager;
     String id_pendaftar;
+    private String id_program;
+    MyAPIService myAPIService;
+    LinearLayout noconnlayout;
+    ConstraintLayout constraintcontent;
     interface MyAPIService {
         @FormUrlEncoded
-        @POST("android/program/detail")
-        Call<List<Program>> getProgram(@Field("id_program") String id_program);
+        @POST("program/detail_program")
+        Call<GeneralSingleResponse> getProgram(@Field("id_program") String id_program);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_program);
-        final ConstraintLayout constraintcontent= (ConstraintLayout) findViewById(R.id.constraintcontent);
+        constraintcontent= (ConstraintLayout) findViewById(R.id.constraintcontent);
         constraintcontent.setVisibility(View.GONE);
         Button btBack = (Button) findViewById(R.id.btBack);
         btBack.setOnClickListener(new View.OnClickListener() {
@@ -70,34 +77,40 @@ public class DetailProgramActivity extends AppCompatActivity {
 
         TxvNamaProgram=(TextView) findViewById(R.id.TxvNamaProgram);
         TxvDeskrisiProgram=(TextView) findViewById(R.id.TxvDeskripsiProgram);
-        TxvCaraPendaftaran=(TextView) findViewById(R.id.TxvCaraPendaftaran);
-        TxvKetentuan=(TextView) findViewById(R.id.TxvKetentuan);
+        TxvCaraPendaftaran= findViewById(R.id.TxvCaraPendaftaran);
+        TxvKetentuan = findViewById(R.id.TxvKetentuan);
 
-        final LinearLayout noconnlayout=(LinearLayout) findViewById(R.id.included_nocon);
+        noconnlayout=(LinearLayout) findViewById(R.id.included_nocon);
         noconnlayout.setVisibility(View.GONE);
         prefManager = new PrefManager(this);
 
-        MyAPIService myAPIService = RetrofitClientInstance.getRetrofitInstance().create(MyAPIService.class);
-        final String id_program= getIntent().getStringExtra("id_program");
-        Call<List<Program>> call = myAPIService.getProgram(id_program);
-        call.enqueue(new Callback<List<Program>>() {
+        myAPIService = RetrofitClientInstance.getRetrofitInstance().create(MyAPIService.class);
+        id_program= getIntent().getStringExtra("id_program");
+
+        requestApi();
+
+    }
+    private void requestApi(){
+        Call<GeneralSingleResponse> call = myAPIService.getProgram(id_program);
+        call.enqueue(new Callback<GeneralSingleResponse>() {
 
             @Override
-            public void onResponse(Call<List<Program>> call, final Response<List<Program>> response) {
+            public void onResponse(Call<GeneralSingleResponse> call, final Response<GeneralSingleResponse> response) {
+                mShimmerViewContainer.stopShimmerAnimation();
+                mShimmerViewContainer.setVisibility(View.GONE);
+                constraintcontent.setVisibility(View.VISIBLE);
                 if (response.body() != null) {
-                    mShimmerViewContainer.stopShimmerAnimation();
-                    mShimmerViewContainer.setVisibility(View.GONE);
-                    constraintcontent.setVisibility(View.VISIBLE);
-                    TxvNamaProgram.setText(response.body().get(0).getNama_program());
+                    if (response.body().getData() != null){
+                        Program program = response.body().getData(Program.class);
+                        TxvNamaProgram.setText(program.getNama_program());
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                        TxvDeskrisiProgram.setText(Html.fromHtml(response.body().get(0).getDeskripsi_program(), Html.FROM_HTML_MODE_COMPACT));
-                        TxvCaraPendaftaran.setText(Html.fromHtml(response.body().get(0).getCara_pendaftaran(), Html.FROM_HTML_MODE_COMPACT));
-                        TxvKetentuan.setText(Html.fromHtml(response.body().get(0).getKetentuan(), Html.FROM_HTML_MODE_COMPACT));
-                    } else {
-                        TxvDeskrisiProgram.setText(Html.fromHtml(response.body().get(0).getDeskripsi_program()));
-                        TxvCaraPendaftaran.setText(Html.fromHtml(response.body().get(0).getCara_pendaftaran()));
-                        TxvKetentuan.setText(Html.fromHtml(response.body().get(0).getKetentuan()));
+                        TxvKetentuan.loadData(program.getKetentuan(),"","");
+                        TxvCaraPendaftaran.loadData(program.getCara_pendaftaran(), "","");
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                            TxvDeskrisiProgram.setText(Html.fromHtml(program.getDeskripsi_program(), Html.FROM_HTML_MODE_COMPACT));
+                        } else {
+                            TxvDeskrisiProgram.setText(Html.fromHtml(program.getDeskripsi_program()));
+                        }
                     }
 
                 }else{
@@ -106,7 +119,7 @@ public class DetailProgramActivity extends AppCompatActivity {
                 }
             }
             @Override
-            public void onFailure(Call<List<Program>> call, Throwable throwable) {
+            public void onFailure(Call<GeneralSingleResponse> call, Throwable throwable) {
 
                 constraintcontent.setVisibility(View.GONE);
                 mShimmerViewContainer.stopShimmerAnimation();
@@ -124,7 +137,6 @@ public class DetailProgramActivity extends AppCompatActivity {
                 });
             }
         });
-
     }
     public void expandableButton1(View view) {
         expandableLayout1 = (ExpandableRelativeLayout) findViewById(R.id.expandableLayout1);

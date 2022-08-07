@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.squareup.picasso.Picasso;
 
@@ -21,6 +22,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import id.pritus.dresta.umrah.model.GeneralSingleResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,8 +40,8 @@ public class DetailBeritaActivity extends AppCompatActivity {
 
     interface MyAPIService{
         @FormUrlEncoded
-        @POST("android/artikel/detail")
-        Call<List<Detail>> getDetailArtikel(@Field("id_artikel") String id_artikel);
+        @POST("artikel/detail_artikel")
+        Call<GeneralSingleResponse> getDetailArtikel(@Field("id_artikel") String id_artikel);
     }
 
     @Override
@@ -65,20 +67,24 @@ public class DetailBeritaActivity extends AppCompatActivity {
         MyAPIService myAPIService = RetrofitClientInstance.getRetrofitInstance().create(MyAPIService.class);
 //        Integer id_pengguna = getArguments().getInt("position") + 1;
         String id_artikeli = getIntent().getStringExtra("id_artikel");
-        Call<List<Detail>> call = myAPIService.getDetailArtikel(id_artikeli);
-        call.enqueue(new Callback<List<Detail>>() {
+        Call<GeneralSingleResponse> call = myAPIService.getDetailArtikel(id_artikeli);
+        call.enqueue(new Callback<GeneralSingleResponse>() {
 
             @Override
-            public void onResponse(Call<List<Detail>> call, Response<List<Detail>> response) {
+            public void onResponse(Call<GeneralSingleResponse> call, Response<GeneralSingleResponse> response) {
                 if (response.body() != null) {
-                    showDetailBerita(response.body());
+                    if (response.body().getStatus() == 200){
+                        Detail detail = response.body().getData(Detail.class);
+                        showDetailBerita(detail);
+                    }
                 }else{
 
                 }
             }
             @Override
-            public void onFailure(Call<List<Detail>> call, Throwable throwable) {
-
+            public void onFailure(Call<GeneralSingleResponse> call, Throwable throwable) {
+                Toast.makeText(DetailBeritaActivity.this, "Gagal membuka artikel", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
 
@@ -92,13 +98,13 @@ public class DetailBeritaActivity extends AppCompatActivity {
 
 
 
-    private void showDetailBerita(List<Detail> details) {
+    private void showDetailBerita(Detail detail) {
         // Tangkap data dari intent
-        String judul_artikel= details.get(0).getJudul_artikel();
-        String tgl_berita = details.get(0).gettgl_artikel();
-        String penulis_berita = details.get(0).getPenulis_artikel();
-        String isi_berita = details.get(0).getIsi_artikel();
-        String foto_berita = details.get(0).getGambar_artikel();
+        String judul_artikel= detail.getJudul_artikel();
+        String tgl_berita = detail.gettgl_artikel();
+        String penulis_berita = detail.getPenulis_artikel();
+        String isi_berita = detail.getIsi_artikel();
+        String foto_berita = detail.getGambar_artikel();
 
         // Set judul actionbar / toolbar
         TxvJudulArtikel.setText(judul_artikel);
@@ -179,8 +185,7 @@ public class DetailBeritaActivity extends AppCompatActivity {
         }
 
         public String getGambar_artikel() {
-            String gambar_artikel2= "https://admin.biroumrohcilacap.com/assets/img/artikel/" + gambar_artikel;
-            return  gambar_artikel2;
+            return  gambar_artikel;
         }
 
         public void setGambar_artikel(String gambar_artikel) {

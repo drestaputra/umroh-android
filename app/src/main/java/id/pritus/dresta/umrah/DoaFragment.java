@@ -49,7 +49,6 @@ public class DoaFragment extends Fragment {
             public void onResponse(Call<List<Doa>> call, Response<List<Doa>> response) {
                 if (response.body() != null) {
                     populateGridView(response.body(),view);
-                    Log.d("doalog", response.body().get(0).getNama_doa());
                 }else{
 
                 }

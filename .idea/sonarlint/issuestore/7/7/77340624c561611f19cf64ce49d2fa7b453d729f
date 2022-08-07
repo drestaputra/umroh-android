@@ -1,0 +1,11 @@
+
+p	java:S116$"VRename this field "AddReportBt" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘εκ‚ψÿÿÿÿ
+m	java:S116%"SRename this field "LbtEmail" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Γγή²όÿÿÿÿ
+q	java:S116%"WRename this field "LbtInstagram" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Γγή²όÿÿÿÿ
+p	java:S116%"VRename this field "LbtFacebook" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Γγή²όÿÿÿÿ
+o	java:S116%"URename this field "LbtTelepon" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Γγή²όÿÿÿÿ
+o	java:S116%"URename this field "LbtTwitter" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Γγή²όÿÿÿÿ
+p	java:S116%"VRename this field "LbtWhatsapp" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Γγή²όÿÿÿÿ
+d
+java:S1659%"IDeclare "LbtInstagram" and all following declarations on a separate line.(Γγή²όÿÿÿÿ
+V	java:S125_"<This block of commented-out lines of code should be removed.(’Ò§®ÿÿÿÿÿ

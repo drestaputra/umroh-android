@@ -1,0 +1,70 @@
+
+j
+java:S3008:"TRename this field "NUM_PAGES" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—ÉÃÛ
+Z
+java:S16596"DDeclare "btnNext" and all following declarations on a separate line.(ò«÷Ÿ
+k
+java:S14506"URemove the "btBack" field and declare it as a local variable in the relevant methods.(ò«÷Ÿ
+t
+java:S14501"YRemove the "dotsLayout" field and declare it as a local variable in the relevant methods.(à‡èÀùÿÿÿÿ
+s
+java:S1450/"XRemove the "viewPager" field and declare it as a local variable in the relevant methods.(åÙ¬Ïûÿÿÿÿ
+V	java:S125]"<This block of commented-out lines of code should be removed.(¼ã†Ûûÿÿÿÿ
+Q	java:S125d"<This block of commented-out lines of code should be removed.(Øþ”
+V
+java:S1854–":Remove this useless assignment to local variable "Update".(ø‘—Öÿÿÿÿÿ
+W
+java:S1854•";Remove this useless assignment to local variable "handler".(§çµüÿÿÿÿ
+R
+java:S1854";Remove this useless assignment to local variable "density".(öáã 
+L
+java:S2696l"6Make the enclosing method "static" or remove this set.(Þ©½î
+C
+java:S1481",Remove this unused "density" local variable.(öáã 
+R
+java:S2696’"6Make the enclosing method "static" or remove this set.( Ì˜Ÿýÿÿÿÿ
+H
+java:S1481•",Remove this unused "handler" local variable.(§çµüÿÿÿÿ
+M
+java:S2696™"6Make the enclosing method "static" or remove this set.(Ä€ý©
+G
+java:S1481–"+Remove this unused "Update" local variable.(ø‘—Öÿÿÿÿÿ
+R	java:S125Ÿ"<This block of commented-out lines of code should be removed.(ÅÔ¡¦
+c	java:S100¸"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶ÔƒU
+W	java:S125¹"<This block of commented-out lines of code should be removed.(ˆÉ‘Äûÿÿÿÿ
+—
+java:S1186Ö"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(²ù©j
+
+java:S1186Û"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(îœÆ½ùÿÿÿÿ
+W	java:S125Ã"<This block of commented-out lines of code should be removed.(ÈÈâ²úÿÿÿÿ
+˜
+java:S1186™"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(„Ç‘ö
+G
+java:S1874Š"0Remove this use of "fromHtml"; it is deprecated.(ºñ¿¢
+k	java:S116¦"URename this field "id_manasik" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´¶§¾
+d	java:S100±"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§ÅËË
+d	java:S100´"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Èƒç
+H
+java:S1068/"-Remove this unused "viewPager" private field.(åÙ¬Ïûÿÿÿÿ
+L
+java:S10680"6Remove this unused "myViewPagerAdapter" private field.(™çþ´
+I
+java:S10681".Remove this unused "dotsLayout" private field.(à‡èÀùÿÿÿÿ
+P
+java:S10682"5Remove this unused "pageIndicatorView" private field.(ë»Ë…ÿÿÿÿÿ
+C
+java:S10683"(Remove this unused "dots" private field.(·Èâˆþÿÿÿÿ
+F
+java:S10684"+Remove this unused "layouts" private field.(Ö™ðÞüÿÿÿÿ
+E
+java:S10687"/Remove this unused "prefManager" private field.(ÖÁò®
+G
+java:S1068;"1Remove this unused "customization" private field.(øË¯´
+A
+java:S1068í"+Remove this unused "context" private field.(êÝç
+k	java:S117N"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×Ù„œÿÿÿÿÿ
+l	java:S117–"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ø‘—Öÿÿÿÿÿ
+l	java:S117„"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼âéÎùÿÿÿÿ
+g	java:S117†"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½ìúÜ
+g	java:S117¬"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆ¦Ïå
+g	java:S117±"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§ÅËË

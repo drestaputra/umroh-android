@@ -34,6 +34,7 @@ import org.json.JSONArray;
 import java.text.NumberFormat;
 import java.util.List;
 
+import id.pritus.dresta.umrah.model.GeneralResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -52,12 +53,14 @@ public class ProgramActivity extends AppCompatActivity {
 
 
     interface MyAPIService {
-        @GET("android/program/tampil")
-        Call<List<Program>> getProgram();
+        @GET("program")
+        Call<GeneralResponse> getProgram();
     }
 
 
     private ShimmerFrameLayout mShimmerViewContainer;
+    LinearLayout noconnlayout;
+    TextView textView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,30 +77,39 @@ public class ProgramActivity extends AppCompatActivity {
         });
         mShimmerViewContainer = findViewById(R.id.shimmer_produk_container);
         mShimmerViewContainer.startShimmerAnimation();
-        final TextView textView = (TextView) findViewById(R.id.textPF);
-        final LinearLayout noconnlayout = (LinearLayout) findViewById(R.id.included_nocon);
+        textView = (TextView) findViewById(R.id.textPF);
+        noconnlayout = (LinearLayout) findViewById(R.id.included_nocon);
         noconnlayout.setVisibility(View.GONE);
 
+        requestApi();
 
+
+    }
+    private void requestApi(){
         MyAPIService myAPIService = RetrofitClientInstance.getRetrofitInstance().create(MyAPIService.class);
 //        Integer id_pengguna = getArguments().getInt("position") + 1;
 
-        Call<List<Program>> call = myAPIService.getProgram();
-        call.enqueue(new Callback<List<Program>>() {
+        Call<GeneralResponse> call = myAPIService.getProgram();
+        call.enqueue(new Callback<GeneralResponse>() {
 
             @Override
-            public void onResponse(Call<List<Program>> call, Response<List<Program>> response) {
+            public void onResponse(Call<GeneralResponse> call, Response<GeneralResponse> response) {
+                mShimmerViewContainer.stopShimmerAnimation();
+                mShimmerViewContainer.setVisibility(View.GONE);
                 if (response.body() != null) {
-                    mShimmerViewContainer.stopShimmerAnimation();
-                    mShimmerViewContainer.setVisibility(View.GONE);
-                    populateGridView(response.body());
+                    if (response.body().getData() != null){
+                        List<Program> programList = response.body().getData(Program.class);
+                        populateGridView(programList);
+                    }else{
+                        textView.setText("Produk belum ada");
+                    }
                 } else {
                     textView.setText("Produk belum ada");
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Program>> call, Throwable throwable) {
+            public void onFailure(Call<GeneralResponse> call, Throwable throwable) {
                 mShimmerViewContainer.stopShimmerAnimation();
                 mShimmerViewContainer.setVisibility(View.GONE);
                 noconnlayout.setVisibility(View.VISIBLE);
@@ -105,14 +117,11 @@ public class ProgramActivity extends AppCompatActivity {
                 btRefresh.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intentcart = new Intent(ProgramActivity.this, ProgramActivity.class);
-                        intentcart.addFlags(FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                        startActivity(intentcart);
+                        requestApi();
                     }
                 });
             }
         });
-
     }
 
     @Override

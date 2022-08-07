@@ -1,0 +1,35 @@
+
+s	java:S116%"YRename this field "username_input" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üÆ¾şÿÿÿÿ
+s	java:S116%"YRename this field "password_input" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üÆ¾şÿÿÿÿ
+p	java:S116&"VRename this field "link_daftar" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™×†øÿÿÿÿ
+G
+java:S1659%",Declare "password_input" on a separate line.(üÆ¾şÿÿÿÿ
+J
+java:S1874r"/Remove this use of "vibrate"; it is deprecated.(„ñ¢şşÿÿÿÿ
+J
+java:S1874{"/Remove this use of "vibrate"; it is deprecated.(„ñ¢şşÿÿÿÿ
+d	java:S100‡"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–ûÊ¹
+i	java:S100‹"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤÷öìıÿÿÿÿ
+M
+java:S1874’"6Remove this use of "ProgressDialog"; it is deprecated.(ğ´§ô
+L
+java:S1874“"6Remove this use of "ProgressDialog"; it is deprecated.(ı¸Ôi
+M
+java:S1874—"6Remove this use of "ProgressDialog"; it is deprecated.(Œ³
+l
+java:S2159¦"VRemove this call to "equals"; comparisons between unrelated types always return false.(Ó€¼S
+R	java:S125³"<This block of commented-out lines of code should be removed.(Ù–Ÿ
+m	java:S116Æ"RRename this field "id_agen" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸøÊ×üÿÿÿÿ
+j	java:S116È"TRename this field "id_jamaah" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ï€“Õ
+d	java:S100Ö"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ó„á—
+d	java:S100Ù"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ä…÷é
+i	java:S100Ü"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µ­Çÿÿÿÿÿ
+i	java:S100à"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôÿæÓùÿÿÿÿ
+e	java:S117E"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²Î‘4
+k	java:S117L"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹¹Ÿùÿÿÿÿ
+f	java:S117P"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Å…š
+g	java:S117©"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÃÍäÿ
+g	java:S117Ï"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ­™
+g	java:S117Ï"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ­™
+g	java:S117Ù"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ä…÷é
+l	java:S117à"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôÿæÓùÿÿÿÿ

@@ -73,7 +73,6 @@ public class AkunActivity extends AppCompatActivity {
         }else if(prefManager.isAgenLoggedIn()==true){
             id_user=prefManager.LoggedInIdAgen();
         }
-        Log.d("tesiduser", id_user);
 //        id_user = getIntent().getStringExtra("id_user");
         Call<List<Akun>> call = myAPIService.getAkun(id_user);
         call.enqueue(new Callback<List<Akun>>() {
@@ -81,7 +80,6 @@ public class AkunActivity extends AppCompatActivity {
             public void onResponse(Call<List<Akun>> call, Response<List<Akun>> response) {
 
                 if (response.body() != null) {
-                    Log.d("tesnamaor", response.body().get(0).getNama_lengkap());
                     mShimmerViewContainer.stopShimmerAnimation();
                     mShimmerViewContainer.setVisibility(View.GONE);
 //                    TextView TxvNama,TxvUsername,TxvEmail,TxvNoHp,TxvAlamat,TxvTglLahir,TxvTempatLahir,TxvPekerjaan;
@@ -150,7 +148,7 @@ public class AkunActivity extends AppCompatActivity {
 
     interface MyAPIService {
         @FormUrlEncoded
-        @POST("android/akun/detail")
+        @POST("akun/detail")
         Call<List<Akun>> getAkun(@Field("id_user") String id_user);
     }
 

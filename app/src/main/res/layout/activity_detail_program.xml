@@ -128,11 +128,10 @@
                             app:ael_interpolator="bounce"
                             app:ael_orientation="horizontal">
 
-                            <TextView
+                            <WebView
                                 android:id="@+id/TxvCaraPendaftaran"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="#585858" />
+                                android:layout_height="wrap_content" />
                         </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
 
@@ -152,11 +151,10 @@
                             app:ael_interpolator="bounce"
                             app:ael_orientation="horizontal">
 
-                            <TextView
+                            <WebView
                                 android:id="@+id/TxvKetentuan"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="#585858" />
+                                android:layout_height="wrap_content" />
                         </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
                     </RelativeLayout>

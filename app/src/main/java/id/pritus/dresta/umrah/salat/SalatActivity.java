@@ -44,6 +44,7 @@ import java.util.Locale;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.gson.Gson;
 
 import org.w3c.dom.Text;
 
@@ -156,8 +157,7 @@ public class SalatActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialogInterface.dismiss();
 //                                intent ke home
-                                Intent Ihome = new Intent(SalatActivity.this,MainActivity.class);
-                                startActivity(Ihome);
+                                finish();
                             }
                         })
                         .create()
@@ -187,6 +187,7 @@ public class SalatActivity extends AppCompatActivity {
 
                                 try {
                                     addresses = gcd3.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                                    Log.d("tesdebug189", new Gson().toJson(addresses));
                                     if (addresses.size() > 0)
 
                                     {
@@ -217,7 +218,7 @@ public class SalatActivity extends AppCompatActivity {
                             }
 //                            masuk di on failure
                             else{
-                                tampil("Jakarta","Lokasi Anda Belum AKTIF, Jadwal Berikut Adalah JADWAL SHALAT JAKARTA");
+                                tampil("Indonesia","Lokasi Anda Belum AKTIF, Jadwal Berikut Adalah JADWAL SHALAT JAKARTA");
 //                                Intent intenth = new Intent(SalatActivity.this, MainActivity.class);
 //                                startActivity(intenth);
                             }

@@ -1,0 +1,45 @@
+
+s	java:S116."YRename this field "TxvNamaProgram" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£Á¹˜ÿÿÿÿÿ
+w	java:S116."]Rename this field "TxvDeskrisiProgram" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£Á¹˜ÿÿÿÿÿ
+k	java:S116/"WRename this field "TxvKetentuan" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€™Î
+q	java:S116/"]Rename this field "TxvCaraPendaftaran" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€™Î
+q	java:S1162"WRename this field "id_pendaftar" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú­¾üÿÿÿÿ
+j	java:S1163"URename this field "id_program" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æÑŞô
+i
+java:S1659-"NDeclare "expandableLayout2" and all following declarations on a separate line.(€£’øÿÿÿÿ
+K
+java:S1659."0Declare "TxvDeskrisiProgram" on a separate line.(£Á¹˜ÿÿÿÿÿ
+E
+java:S1659/"0Declare "TxvCaraPendaftaran" on a separate line.(€™Î
+p
+java:S14501"ZRemove the "prefManager" field and declare it as a local variable in the relevant methods.(ÖÁò®
+F
+java:S1874p"0Remove this use of "fromHtml"; it is deprecated.(ÃŠƒı
+B
+java:S1172"+Remove this unused method parameter "view".(¼°½Å
+G
+java:S1172™"+Remove this unused method parameter "view".(Ó¨éşøÿÿÿÿ
+k	java:S116«"URename this field "id_program" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æÑŞô
+l	java:S116­"WRename this field "nama_program" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•Ò¾v
+w	java:S116¯"\Rename this field "deskripsi_program" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àÖßúÿÿÿÿ
+v	java:S116±"[Rename this field "cara_pendaftaran" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹×·ıÿÿÿÿ
+R	java:S125©"<This block of commented-out lines of code should be removed.(¾æã¶
+d	java:S100¾"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÄîïÊ
+i	java:S100Â"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡Ê¦şÿÿÿÿ
+i	java:S100Æ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘ïÉÕıÿÿÿÿ
+i	java:S100Ê"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ôµı¬úÿÿÿÿ
+i	java:S100Î"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷Š«ïûÿÿÿÿ
+d	java:S100Ò"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ì ¨¶
+i	java:S100Ö"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íÎîãúÿÿÿÿ
+d	java:S100Ú"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾£®¦
+E
+java:S10681"/Remove this unused "prefManager" private field.(ÖÁò®
+f	java:S117:"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Î‡ô¯
+l	java:S117¶"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×©‰úÿÿÿÿ
+l	java:S117¶"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×©‰úÿÿÿÿ
+l	java:S117¶"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×©‰úÿÿÿÿ
+l	java:S117¶"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×©‰úÿÿÿÿ
+l	java:S117Â"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡Ê¦şÿÿÿÿ
+l	java:S117Ê"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ôµı¬úÿÿÿÿ
+g	java:S117Ò"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ì ¨¶
+g	java:S117Ú"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾£®¦

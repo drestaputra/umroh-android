@@ -1,0 +1,58 @@
+
+g	java:S116"RRename this field "TxvNama" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬¿ó÷
+k	java:S116"VRename this field "TxvUsername" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬¿ó÷
+h	java:S116"SRename this field "TxvEmail" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬¿ó÷
+g	java:S116"RRename this field "TxvNoHp" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬¿ó÷
+i	java:S116"TRename this field "TxvAlamat" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬¿ó÷
+k	java:S116"VRename this field "TxvTglLahir" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬¿ó÷
+n	java:S116"YRename this field "TxvTempatLahir" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬¿ó÷
+l	java:S116"WRename this field "TxvPekerjaan" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬¿ó÷
+l	java:S116"WRename this field "TxvJenisUser" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬¿ó÷
+i	java:S116"TRename this field "TxvIduser" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬¿ó÷
+l	java:S116 "RRename this field "ImvFoto" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(å€±Çùÿÿÿÿ
+o	java:S116 "URename this field "ImvFotoKtp" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(å€±Çùÿÿÿÿ
+f	java:S116!"QRename this field "BtBack" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ığôÂ
+l	java:S116$"RRename this field "id_user" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÅøÁ¥üÿÿÿÿ
+^
+java:S1659"HDeclare "TxvUsername" and all following declarations on a separate line.(¬¿ó÷
+C
+java:S1659 "(Declare "ImvFotoKtp" on a separate line.(å€±Çùÿÿÿÿ
+m
+java:S3776("RRefactor this method to reduce its Cognitive Complexity from 36 to the 15 allowed.(¨Œşÿÿÿÿ
+P	java:S1255"<This block of commented-out lines of code should be removed.(«µ3
+V	java:S125E"<This block of commented-out lines of code should be removed.(Ø±–çşÿÿÿÿ
+B
+java:S1125G"'Remove the unnecessary boolean literal.(Œšúäùÿÿÿÿ
+B
+java:S1125I"'Remove the unnecessary boolean literal.(â½‚ÿÿÿÿÿ
+V	java:S125L"<This block of commented-out lines of code should be removed.(ŠÍ¾©ıÿÿÿÿ
+Q	java:S125U"<This block of commented-out lines of code should be removed.(ÿ¹
+Q	java:S125`"<This block of commented-out lines of code should be removed.(ø¿œü
+B
+java:S1125b"'Remove the unnecessary boolean literal.(ı»ˆ”ûÿÿÿÿ
+m	java:S116"RRename this field "id_user" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÅøÁ¥üÿÿÿÿ
+r	java:S116Ÿ"WRename this field "nama_lengkap" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šÌùÕÿÿÿÿÿ
+k	java:S116¡"URename this field "jenis_user" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡³÷ú
+k	java:S116§"PRename this field "no_hp" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ìâ¹øúÿÿÿÿ
+j	java:S116«"TRename this field "tgl_lahir" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­ØÙ²
+m	java:S116­"WRename this field "tempat_lahir" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾ÕÍÜ
+i	java:S116±"SRename this field "foto_ktp" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ğãÍ
+i	java:S100Ä"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ı¢Éõşÿÿÿÿ
+i	java:S100È"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àÒü›ÿÿÿÿÿ
+d	java:S100Ì"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Áƒ»€
+i	java:S100Ø"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Á­»âúÿÿÿÿ
+i	java:S100à"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(â©œÀÿÿÿÿÿ
+d	java:S100ä"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·åƒş
+i	java:S100ì"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿Ûÿÿÿÿÿÿ
+i	java:S100ğ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µ§áÍùÿÿÿÿ
+]	java:S107µ"BConstructor has 12 parameters, which is greater than 7 authorized.(É–ÃÖüÿÿÿÿ
+l	java:S117˜"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú«œ°úÿÿÿÿ
+l	java:S117µ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É–ÃÖüÿÿÿÿ
+l	java:S117µ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É–ÃÖüÿÿÿÿ
+l	java:S117µ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É–ÃÖüÿÿÿÿ
+l	java:S117µ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É–ÃÖüÿÿÿÿ
+l	java:S117µ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É–ÃÖüÿÿÿÿ
+l	java:S117µ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É–ÃÖüÿÿÿÿ
+l	java:S117µ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É–ÃÖüÿÿÿÿ
+R
+java:S4973g"<Strings and Boxed types should be compared using "equals()".(èîõÁ

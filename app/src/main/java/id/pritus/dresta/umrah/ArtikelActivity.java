@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.squareup.picasso.Picasso;
 
@@ -31,6 +32,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import id.pritus.dresta.umrah.model.GeneralResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -42,8 +44,8 @@ public class ArtikelActivity extends AppCompatActivity {
     RecyclerView recyclerView;
 
     interface MyAPIService{
-        @GET("android/artikel/tampil")
-        Call<List<Artikel>>getArtikel();
+        @GET("artikel")
+        Call<GeneralResponse>getArtikel();
     }
 
     @Override
@@ -66,22 +68,23 @@ public class ArtikelActivity extends AppCompatActivity {
         MyAPIService myAPIService = RetrofitClientInstance.getRetrofitInstance().create(MyAPIService.class);
 //        Integer id_pengguna = getArguments().getInt("position") + 1;
 
-        Call<List<Artikel>> call = myAPIService.getArtikel();
-        call.enqueue(new Callback<List<Artikel>>() {
+        Call<GeneralResponse> call = myAPIService.getArtikel();
+        call.enqueue(new Callback<GeneralResponse>() {
 
             @Override
-            public void onResponse(Call<List<Artikel>> call, Response<List<Artikel>> response) {
+            public void onResponse(Call<GeneralResponse> call, Response<GeneralResponse> response) {
                 if (response.body() != null) {
                     mShimmerViewContainer.stopShimmerAnimation();
                     mShimmerViewContainer.setVisibility(View.GONE);
-                    populateGridView((ArrayList<Artikel>) response.body());
+                    List<Artikel> artikels = response.body().getData(Artikel.class);
+                    populateGridView(artikels);
                 } else {
                     textView.setText("Produk belum ada");
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Artikel>> call, Throwable throwable) {
+            public void onFailure(Call<GeneralResponse> call, Throwable throwable) {
                 mShimmerViewContainer.stopShimmerAnimation();
                 mShimmerViewContainer.setVisibility(View.GONE);
                 noconnlayout.setVisibility(View.VISIBLE);
@@ -236,7 +239,7 @@ public class ArtikelActivity extends AppCompatActivity {
 
         public String getGambar_artikel() {
 
-            String gambar_artikel2= "https://admin.biroumrohcilacap.com/assets/img/artikel/" + gambar_artikel;
+            String gambar_artikel2= gambar_artikel;
             return  gambar_artikel2;
         }
 

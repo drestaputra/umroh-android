@@ -21,6 +21,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+import id.pritus.dresta.umrah.model.GeneralResponse;
+import id.pritus.dresta.umrah.model.GeneralSingleResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,8 +43,8 @@ public class LoginActivity extends AppCompatActivity {
 
     interface MyAPIService {
         @FormUrlEncoded
-        @POST("/android/login/cek")
-        Call<List<Datapengguna>> getDatapengguna(@Field("username") String username, @Field("password") String password);
+        @POST("login/user")
+        Call<GeneralSingleResponse> getDatapengguna(@Field("username") String username, @Field("password") String password);
 
     }
     @Override
@@ -150,38 +152,40 @@ public class LoginActivity extends AppCompatActivity {
         progressDoalog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFD4D9D0")));
         progressDoalog.show();
 
-        Call<List<Datapengguna>> call = myAPIService.getDatapengguna(username,password);
+        Call<GeneralSingleResponse> call = myAPIService.getDatapengguna(username,password);
 
-        call.enqueue(new Callback<List<Datapengguna>>() {
+        call.enqueue(new Callback<GeneralSingleResponse>() {
 
             @Override
-            public void onResponse(Call<List<Datapengguna>> call, Response<List<Datapengguna>> response) {
+            public void onResponse(Call<GeneralSingleResponse> call, Response<GeneralSingleResponse> response) {
 
                 if (response.body() != null) {
                     progressDoalog.dismiss();
-                    if(!response.body().get(0).getStatus().equals("gagal")){
+
+                    Datapengguna datapengguna = response.body().getData(Datapengguna.class);
+                    if(response.body().getStatus().equals("200")){
                         //get username
-                        String user = response.body().get(0).getUsername();
+                        String user = datapengguna.getUsername();
                         String id_user;
-                        if (response.body().get(0).getId_jamaah()!=null){
-                            id_user = response.body().get(0).getId_jamaah();
+                        if (datapengguna.getId_jamaah()!=null){
+                            id_user = datapengguna.getId_jamaah();
                             set_sess_jamaah(user,id_user);
 
                         }else{
-                            id_user = response.body().get(0).getId_agen();
+                            id_user = datapengguna.getId_agen();
                             set_sess_agen(user,id_user);
                         }
                         startActivity(new Intent(LoginActivity.this,MainActivity.class));
-//                        Toast.makeText(LoginActivity.this, response.body().get(0).getStatus(), Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(LoginActivity.this, datapengguna.getStatus(), Toast.LENGTH_SHORT).show();
 
                     }else{
                         progressDoalog.dismiss();
-                        Toast.makeText(LoginActivity.this,response.body().get(0).getPesan(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this,datapengguna.getPesan(),Toast.LENGTH_LONG).show();
                     }
                 }
             }
             @Override
-            public void onFailure(Call<List<Datapengguna>> call, Throwable throwable) {
+            public void onFailure(Call<GeneralSingleResponse> call, Throwable throwable) {
                 progressDoalog.dismiss();
                 Toast.makeText(LoginActivity.this, "Gagal Login, Coba Lagi", Toast.LENGTH_LONG).show();
             }

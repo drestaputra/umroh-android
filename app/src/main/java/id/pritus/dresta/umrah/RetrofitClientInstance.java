@@ -1,5 +1,9 @@
 package id.pritus.dresta.umrah;
 
+import android.util.Log;
+
+import com.google.gson.Gson;
+
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -8,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClientInstance {
     public static Retrofit retrofit;
-    public static final String BASE_URL = "https://vicasion.com/umroh/";
+    public static final String BASE_URL = "https://android.almakwatour.com/api/";
 
 
     public static Retrofit getRetrofitInstance() {

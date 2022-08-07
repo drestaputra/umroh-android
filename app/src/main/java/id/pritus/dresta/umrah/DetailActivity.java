@@ -38,6 +38,7 @@ import com.facebook.shimmer.ShimmerFrameLayout;
 
 import org.w3c.dom.Text;
 
+import id.pritus.dresta.umrah.model.GeneralSingleResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -56,17 +57,20 @@ public class DetailActivity extends AppCompatActivity {
     private ShimmerFrameLayout mShimmerViewContainer;
     private PrefManager prefManager;
     String id_pendaftar,id_produk,nama_produk;
+    private ConstraintLayout constraintcontent;
+    private LinearLayout noconnlayout;
+    private MyAPIService myAPIService;
     interface MyAPIService {
         @FormUrlEncoded
-        @POST("android/produk/detail")
-        Call<List<Produk>> getProduk(@Field("id_produk") String id_produk);
+        @POST("produk/detail_produk")
+        Call<GeneralSingleResponse> getProduk(@Field("id_produk") String id_produk);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        final ConstraintLayout constraintcontent= (ConstraintLayout) findViewById(R.id.constraintcontent);
+        constraintcontent= (ConstraintLayout) findViewById(R.id.constraintcontent);
         constraintcontent.setVisibility(View.GONE);
         Button btBack = (Button) findViewById(R.id.btBack);
         btBack.setOnClickListener(new View.OnClickListener() {
@@ -89,28 +93,31 @@ public class DetailActivity extends AppCompatActivity {
         Txvfasilitas=(TextView) findViewById(R.id.Txvfasilitas);
         Txvhak_calon_jamaah=(TextView) findViewById(R.id.Txvhak_calon_jamaah);
         Txvsyarat_ketentuan=(TextView) findViewById(R.id.Txvsyarat_ketentuan);
-        final LinearLayout noconnlayout=(LinearLayout) findViewById(R.id.included_nocon);
+        noconnlayout=(LinearLayout) findViewById(R.id.included_nocon);
         noconnlayout.setVisibility(View.GONE);
         prefManager = new PrefManager(this);
-
-        MyAPIService myAPIService = RetrofitClientInstance.getRetrofitInstance().create(MyAPIService.class);
+        myAPIService = RetrofitClientInstance.getRetrofitInstance().create(MyAPIService.class);
         id_produk = getIntent().getStringExtra("id_produk");
-        Call<List<Produk>> call = myAPIService.getProduk(id_produk);
-        call.enqueue(new Callback<List<Produk>>() {
+        hit();
 
+    }
+    private void hit(){
+        Call<GeneralSingleResponse> call = myAPIService.getProduk(id_produk);
+        call.enqueue(new Callback<GeneralSingleResponse>() {
             @Override
-            public void onResponse(Call<List<Produk>> call, final Response<List<Produk>> response) {
+            public void onResponse(Call<GeneralSingleResponse> call, final Response<GeneralSingleResponse> response) {
                 if (response.body() != null) {
+                    final DetailActivity.Produk produk = response.body().getData(DetailActivity.Produk.class);
                     mShimmerViewContainer.stopShimmerAnimation();
                     mShimmerViewContainer.setVisibility(View.GONE);
                     constraintcontent.setVisibility(View.VISIBLE);
-                    if (response.body().get(0).getItin() !=null){
+                    if (produk.getItin() !=null){
                         expandablebuttonItinerary.setVisibility(View.VISIBLE);
                     }
-                    String hargarpp= NumberFormat.getInstance().format(Integer.parseInt(response.body().get(0).getHarga_produk()));;
+                    String hargarpp= NumberFormat.getInstance().format(Integer.parseInt(produk.getHarga_produk()));;
                     Txvharga_produk.setText("Rp. "+hargarpp);
-                    String harga_coret_rpp = NumberFormat.getInstance().format(Integer.parseInt(response.body().get(0).getHarga_coret()));
-                    String sisa_seat_nf = NumberFormat.getInstance().format(Integer.parseInt(response.body().get(0).getSisa_seat()));
+                    String harga_coret_rpp = NumberFormat.getInstance().format(Integer.parseInt(produk.getHarga_coret()));
+                    String sisa_seat_nf = NumberFormat.getInstance().format(Integer.parseInt(produk.getSisa_seat()));
                     if (harga_coret_rpp.equals("0")){
                         Txvharga_coret.setVisibility(View.GONE);
                     }else{
@@ -122,19 +129,19 @@ public class DetailActivity extends AppCompatActivity {
                         TxvSisaSeat.setText("Sisa seat: " + sisa_seat_nf);
                     }
 
-                    Txvnama_produk.setText(response.body().get(0).getName());
-                    nama_produk=response.body().get(0).getName();
+                    Txvnama_produk.setText(produk.getName());
+                    nama_produk=produk.getName();
                     Txvfasilitas.setText("tes");
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                        Txvdeskripsi_produk.setText(Html.fromHtml(response.body().get(0).getDeskripsi_produk(), Html.FROM_HTML_MODE_COMPACT));
-                        Txvfasilitas.setText(Html.fromHtml(response.body().get(0).getFasilitas(), Html.FROM_HTML_MODE_COMPACT));
-                        Txvhak_calon_jamaah.setText(Html.fromHtml(response.body().get(0).getHak_calon_jamaah(), Html.FROM_HTML_MODE_COMPACT));
-                        Txvsyarat_ketentuan.setText(Html.fromHtml(response.body().get(0).getSyarat_ketentuan(), Html.FROM_HTML_MODE_COMPACT));
+                        Txvdeskripsi_produk.setText(Html.fromHtml(produk.getDeskripsi_produk(), Html.FROM_HTML_MODE_COMPACT));
+                        Txvfasilitas.setText(Html.fromHtml(produk.getFasilitas(), Html.FROM_HTML_MODE_COMPACT));
+                        Txvhak_calon_jamaah.setText(Html.fromHtml(produk.getHak_calon_jamaah(), Html.FROM_HTML_MODE_COMPACT));
+                        Txvsyarat_ketentuan.setText(Html.fromHtml(produk.getSyarat_ketentuan(), Html.FROM_HTML_MODE_COMPACT));
                     } else {
-                        Txvdeskripsi_produk.setText(Html.fromHtml(response.body().get(0).getDeskripsi_produk()));
-                        Txvfasilitas.setText(Html.fromHtml(response.body().get(0).getFasilitas()));
-                        Txvhak_calon_jamaah.setText(Html.fromHtml(response.body().get(0).getHak_calon_jamaah()));
-                        Txvsyarat_ketentuan.setText(Html.fromHtml(response.body().get(0).getSyarat_ketentuan()));
+                        Txvdeskripsi_produk.setText(Html.fromHtml(produk.getDeskripsi_produk()));
+                        Txvfasilitas.setText(Html.fromHtml(produk.getFasilitas()));
+                        Txvhak_calon_jamaah.setText(Html.fromHtml(produk.getHak_calon_jamaah()));
+                        Txvsyarat_ketentuan.setText(Html.fromHtml(produk.getSyarat_ketentuan()));
                     }
                     buttondaftar.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -160,14 +167,14 @@ public class DetailActivity extends AppCompatActivity {
                             }else if (prefManager.LoggedInIdJamaah()!=null){
                                 id_pendaftar = prefManager.LoggedInIdJamaah();
                                 Intent idaftar = new Intent(DetailActivity.this,WebActivity.class);
-                                String urldaftar=response.body().get(0).getUrl_daftar()+"/"+id_pendaftar;
+                                String urldaftar = produk.getUrl_daftar()+"/"+id_pendaftar;
                                 Log.d("urldaftar", urldaftar);
                                 idaftar.putExtra("url",urldaftar);
                                 startActivity(idaftar);
                             }else if(prefManager.LoggedInIdAgen()!=null){
                                 id_pendaftar = prefManager.LoggedInIdAgen();
                                 Intent idaftar = new Intent(DetailActivity.this,WebActivity.class);
-                                String urldaftar=response.body().get(0).getUrl_daftar()+"/"+id_pendaftar;
+                                String urldaftar=produk.getUrl_daftar()+"/"+id_pendaftar;
                                 idaftar.putExtra("url",urldaftar);
                                 Log.d("urldaftar", urldaftar);
                                 startActivity(idaftar);
@@ -175,38 +182,35 @@ public class DetailActivity extends AppCompatActivity {
                         }
                     });
 
-                    if(response.body().get(0).getImageURL() != null && response.body().get(0).getImageURL().length()>0)
+                    if(produk.getImageURL() != null && produk.getImageURL().length()>0)
                     {
-                        Picasso.with(getApplicationContext()).load(response.body().get(0).getImageURL()).placeholder(R.color.greycustom2).into(Imvfoto_produk);
+                        Picasso.with(getApplicationContext()).load(produk.getImageURL()).placeholder(R.color.greycustom2).into(Imvfoto_produk);
                     }else {
                         Picasso.with(getApplicationContext()).load(R.color.greycustom2).into(Imvfoto_produk);
                     }
 
                 }else{
-                    mShimmerViewContainer.stopShimmerAnimation();
-                    mShimmerViewContainer.setVisibility(View.GONE);
+                    setRefresh();
                 }
             }
             @Override
-            public void onFailure(Call<List<Produk>> call, Throwable throwable) {
-
-                constraintcontent.setVisibility(View.GONE);
-                mShimmerViewContainer.stopShimmerAnimation();
-                mShimmerViewContainer.setVisibility(View.GONE);
-                noconnlayout.setVisibility(View.VISIBLE);
-                Button btRefresh=(Button) findViewById(R.id.btRefresh);
-                btRefresh.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intentcart = new Intent(DetailActivity.this, ProdukActivity.class);
-//                        intentcart.putExtra("id_produk",thisProduk.getId());
-                        intentcart.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intentcart);
-                    }
-                });
+            public void onFailure(Call<GeneralSingleResponse> call, Throwable throwable) {
+                setRefresh();
             }
         });
-
+    }
+    private void setRefresh(){
+        constraintcontent.setVisibility(View.GONE);
+        mShimmerViewContainer.stopShimmerAnimation();
+        mShimmerViewContainer.setVisibility(View.GONE);
+        noconnlayout.setVisibility(View.VISIBLE);
+        Button btRefresh=(Button) findViewById(R.id.btRefresh);
+        btRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                hit();
+            }
+        });
     }
     private GridViewAdapter adapter;
     private ExpandableHeightGridView mGridView;

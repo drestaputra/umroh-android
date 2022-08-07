@@ -1,0 +1,34 @@
+
+k	java:S116"WRename this field "PRIVATE_MODE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š™èo
+n
+java:S3008"SRename this field "_context" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§Şâùÿÿÿÿ
+t
+java:S4144N"^Update this method so that its implementation is not identical to "LoggedInIdAgen" on line 74.(øş‰ı
+z
+java:S4144V"dUpdate this method so that its implementation is not identical to "LoggedInAgenUsername" on line 82.(ìã°°
+@
+java:S3010"%Remove this assignment of "_context".(Äš“Åÿÿÿÿÿ
+P
+java:S2209"5Change this instance-reference to a static reference.(Äš“Åÿÿÿÿÿ
+U
+java:S1117,":Rename "editor" which hides the field declared at line 10.(ÀÂ©Éÿÿÿÿÿ
+U
+java:S11172":Rename "editor" which hides the field declared at line 10.(ÀÂ©Éÿÿÿÿÿ
+U
+java:S11178":Rename "editor" which hides the field declared at line 10.(ÀÂ©Éÿÿÿÿÿ
+b	java:S100J"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ïîÔ\
+c	java:S100N"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(øş‰ı
+h	java:S100R"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰ôæóÿÿÿÿÿ
+c	java:S100V"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ìã°°
+U
+java:S1117_":Rename "editor" which hides the field declared at line 10.(ÀÂ©Éÿÿÿÿÿ
+k	java:S1170"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(åš½Ôøÿÿÿÿ
+e	java:S1176"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®âa
+o
+java:S1104"TMake _context a static final constant or non-public and provide accessors if needed.(§Şâùÿÿÿÿ
+p
+java:S1104"UMake mInstance a static final constant or non-public and provide accessors if needed.(€ğƒÇşÿÿÿÿ
+I
+java:S1444".Make this "public static _context" field final(§Şâùÿÿÿÿ
+J
+java:S1444"/Make this "public static mInstance" field final(€ğƒÇşÿÿÿÿ

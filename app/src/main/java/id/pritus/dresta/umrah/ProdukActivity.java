@@ -34,6 +34,7 @@ import org.json.JSONArray;
 import java.text.NumberFormat;
 import java.util.List;
 
+import id.pritus.dresta.umrah.model.GeneralResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -50,8 +51,8 @@ public class ProdukActivity extends AppCompatActivity {
 
 
     interface MyAPIService {
-        @GET("android/produk/tampil")
-        Call<List<Produk>> getProduk();
+        @GET("produk")
+        Call<GeneralResponse> getProduk();
     }
 
 
@@ -80,22 +81,23 @@ public class ProdukActivity extends AppCompatActivity {
         MyAPIService myAPIService = RetrofitClientInstance.getRetrofitInstance().create(MyAPIService.class);
 //        Integer id_pengguna = getArguments().getInt("position") + 1;
 
-        Call<List<Produk>> call = myAPIService.getProduk();
-        call.enqueue(new Callback<List<Produk>>() {
+        Call<GeneralResponse> call = myAPIService.getProduk();
+        call.enqueue(new Callback<GeneralResponse>() {
 
             @Override
-            public void onResponse(Call<List<Produk>> call, Response<List<Produk>> response) {
+            public void onResponse(Call<GeneralResponse> call, Response<GeneralResponse> response) {
                 if (response.body() != null) {
                     mShimmerViewContainer.stopShimmerAnimation();
                     mShimmerViewContainer.setVisibility(View.GONE);
-                    populateGridView(response.body());
+                    List<Produk> produks = response.body().getData(Produk.class);
+                    populateGridView(produks);
                 } else {
                     textView.setText("Produk belum ada");
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Produk>> call, Throwable throwable) {
+            public void onFailure(Call<GeneralResponse> call, Throwable throwable) {
                 mShimmerViewContainer.stopShimmerAnimation();
                 mShimmerViewContainer.setVisibility(View.GONE);
                 noconnlayout.setVisibility(View.VISIBLE);
@@ -183,8 +185,15 @@ public class ProdukActivity extends AppCompatActivity {
             }
             Txvnama_produk.setText(thisProduk.getName());
             String hargarpp = NumberFormat.getInstance().format(Integer.parseInt(thisProduk.getHarga_produk()));
-            String harga_coret_rpp = NumberFormat.getInstance().format(Integer.parseInt(thisProduk.getHarga_coret()));
-            String sisa_seat_nf = NumberFormat.getInstance().format(Integer.parseInt(thisProduk.getSisa_seat()));
+            String harga_coret_rpp = "0";
+            if (thisProduk.getHarga_coret() != null){
+                harga_coret_rpp = NumberFormat.getInstance().format(Integer.parseInt(thisProduk.getHarga_coret()));
+            }
+            String sisa_seat_nf = "0";
+            if (thisProduk.getSisa_seat() != null){
+                sisa_seat_nf = NumberFormat.getInstance().format(Integer.parseInt(thisProduk.getSisa_seat()));
+            }
+
             Txvharga_produk.setText("Rp. " + hargarpp);
             if (harga_coret_rpp.equals("0")){
                 Txvharga_coret.setVisibility(View.GONE);
@@ -327,8 +336,7 @@ public class ProdukActivity extends AppCompatActivity {
         }
 
         public String getImageURL() {
-            String foto_produk2 = "https://admin.biroumrohcilacap.com/assets/img/produk/" + foto_produk;
-            return foto_produk2;
+            return foto_produk;
         }
 
         public String getDeskripsi_produk() {

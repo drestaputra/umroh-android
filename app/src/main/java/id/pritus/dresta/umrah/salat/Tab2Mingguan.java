@@ -226,7 +226,7 @@ public class Tab2Mingguan extends Fragment {
 
     private void createGridView(List<Jadwal> jadwalList){
         // Create grid adopter
-        GridViewAdapter productAdapter = new GridViewAdapter( getActivity().getApplicationContext(), jadwalList );
+        GridViewAdapter productAdapter = new GridViewAdapter( getActivity(), jadwalList );
         // Set grid adapter into GridView
         gridView.setAdapter( productAdapter );
     }

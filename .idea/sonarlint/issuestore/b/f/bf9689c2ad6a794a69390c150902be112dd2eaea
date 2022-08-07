@@ -1,0 +1,120 @@
+
+r	java:S116R"XRename this field "EtNamaLengkap" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ë×ê‰ùÿÿÿÿ
+r	java:S116R"XRename this field "EtTempatLahir" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ë×ê‰ùÿÿÿÿ
+s	java:S116R"YRename this field "EtTanggalLahir" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ë×ê‰ùÿÿÿÿ
+m	java:S116R"SRename this field "EtAlamat" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ë×ê‰ùÿÿÿÿ
+n	java:S116R"TRename this field "EtNomorHp" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ë×ê‰ùÿÿÿÿ
+p	java:S116R"VRename this field "EtPekerjaan" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ë×ê‰ùÿÿÿÿ
+l	java:S116R"RRename this field "EtEmail" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ë×ê‰ùÿÿÿÿ
+t	java:S116R"ZRename this field "EtNomorRekening" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ë×ê‰ùÿÿÿÿ
+k	java:S116R"QRename this field "EtBank" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ë×ê‰ùÿÿÿÿ
+o	java:S116R"URename this field "EtUsername" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ë×ê‰ùÿÿÿÿ
+o	java:S116R"URename this field "EtPassword" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ë×ê‰ùÿÿÿÿ
+p	java:S116R"VRename this field "EtCPassword" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ë×ê‰ùÿÿÿÿ
+o	java:S116S"URename this field "link_login" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(öÖÓíıÿÿÿÿ
+t	java:S116T"ZRename this field "IvFotoKtpJamaah" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(öÖïæûÿÿÿÿ
+n	java:S116U"YRename this field "BtTanggalLahir" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğúÖ»
+s	java:S116V"YRename this field "UFotoKtpJamaah" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Úô×—üÿÿÿÿ
+p	java:S116V"VRename this field "UFotoJamaah" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Úô×—üÿÿÿÿ
+n	java:S116W"YRename this field "FFotoKTPjamaah" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’şÖ
+k	java:S116W"VRename this field "FFotoJamaah" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’şÖ
+t	java:S116X"ZRename this field "PFFotoKTPJamaah" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°Ü§’øÿÿÿÿ
+o	java:S116X"URename this field "notif_a_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°Ü§’øÿÿÿÿ
+s	java:S116Y"YRename this field "RgJenisKelamin" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰ş™Øûÿÿÿÿ
+s	java:S116Z"YRename this field "RbJenisKelamin" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿŠµ÷şÿÿÿÿ
+e
+java:S1659R"JDeclare "EtTempatLahir" and all following declarations on a separate line.(Ë×ê‰ùÿÿÿÿ
+[
+java:S1659T"@Declare "imv" and all following declarations on a separate line.(öÖïæûÿÿÿÿ
+b
+java:S1659U"LDeclare "btFotoKtpJamaah" and all following declarations on a separate line.(ğúÖ»
+D
+java:S1659V")Declare "UFotoJamaah" on a separate line.(Úô×—üÿÿÿÿ
+?
+java:S1659W")Declare "FFotoJamaah" on a separate line.(’şÖ
+C
+java:S1659X"(Declare "notif_a_id" on a separate line.(°Ü§’øÿÿÿÿ
+^
+java:S1659["CDeclare "mMonth" and all following declarations on a separate line.(Ë¯Æ¸üÿÿÿÿ
+x
+java:S1450Z"]Remove the "RbJenisKelamin" field and declare it as a local variable in the relevant methods.(ÿŠµ÷şÿÿÿÿ
+x
+java:S1450Y"]Remove the "RgJenisKelamin" field and declare it as a local variable in the relevant methods.(‰ş™Øûÿÿÿÿ
+n
+java:S1450["SRemove the "mDay" field and declare it as a local variable in the relevant methods.(Ë¯Æ¸üÿÿÿÿ
+p
+java:S1450["URemove the "mMonth" field and declare it as a local variable in the relevant methods.(Ë¯Æ¸üÿÿÿÿ
+o
+java:S1450["TRemove the "mYear" field and declare it as a local variable in the relevant methods.(Ë¯Æ¸üÿÿÿÿ
+R	java:S125Š"<This block of commented-out lines of code should be removed.(ÆàÖé
+W	java:S125"<This block of commented-out lines of code should be removed.(ÂõïÆÿÿÿÿÿ
+i
+java:S3252š"MUse static access with "android.provider.MediaStore$MediaColumns" for "DATA".(ÅöÔ¡üÿÿÿÿ
+d
+java:S3252"MUse static access with "android.provider.MediaStore$MediaColumns" for "DATA".(ñ²ùÏ
+R
+java:S1874°"6Remove this use of "ProgressDialog"; it is deprecated.(şŞ²—úÿÿÿÿ
+R
+java:S1874°"6Remove this use of "ProgressDialog"; it is deprecated.(şŞ²—úÿÿÿÿ
+M
+java:S1874±"6Remove this use of "ProgressDialog"; it is deprecated.(¥È„¿
+N
+java:S1135”"2Complete the task associated to this TODO comment.(©ˆÕîøÿÿÿÿ
+R	java:S125¡"<This block of commented-out lines of code should be removed.(¡Šè¦
+n
+java:S3776¥"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(Ø¬Ú±ıÿÿÿÿ
+[
+java:S1854°"DRemove this useless assignment to local variable "EtNomorrekenings".(¦­•
+L
+java:S1481°"5Remove this unused "EtNomorrekenings" local variable.(¦­•
+R	java:S125Ğ"<This block of commented-out lines of code should be removed.(‘¡æ·
+R	java:S125Ù"<This block of commented-out lines of code should be removed.(õÇİ×
+W	java:S125ò"<This block of commented-out lines of code should be removed.(†ì±¼úÿÿÿÿ
+W	java:S125„"<This block of commented-out lines of code should be removed.(·Ğşÿÿÿÿ
+Q
+java:S1068M"6Remove this unused "EXTERNAL_STORAGE_P" private field.(ûœ¹¹ùÿÿÿÿ
+D
+java:S1068[")Remove this unused "mHour" private field.(Ë¯Æ¸üÿÿÿÿ
+F
+java:S1068["+Remove this unused "mMinute" private field.(Ë¯Æ¸üÿÿÿÿ
+R	java:S107o"=Method has 15 parameters, which is greater than 7 authorized.(Îÿ³
+f	java:S117q"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ïÉÜ¥
+f	java:S117r"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÔŠºé
+k	java:S117s"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(º¢Ìûÿÿÿÿ
+f	java:S117t"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±ÒÖÌ
+k	java:S117v"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼‘àÀúÿÿÿÿ
+k	java:S117y"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ºòïİûÿÿÿÿ
+k	java:S117z"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯æÛıÿÿÿÿ
+l	java:S117¨"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ê°÷şúÿÿÿÿ
+l	java:S117ç"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(úŞúÂıÿÿÿÿ
+g	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñ²ùÏ
+g	java:S117º"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰¾Æ
+g	java:S117»"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§ûÎÿ
+l	java:S117¼"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æäşõøÿÿÿÿ
+l	java:S117½"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ù€·íüÿÿÿÿ
+f	java:S117¾"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø„Âi
+l	java:S117¿"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œÓŠØøÿÿÿÿ
+g	java:S117À"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ş«¬Œ
+g	java:S117Á"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦­•
+g	java:S117Â"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹Áú“
+g	java:S117Ã"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŠúÑ÷
+l	java:S117Ä"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿ³’½ûÿÿÿÿ
+l	java:S117â"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜Õßñúÿÿÿÿ
+f	java:S117ã"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€¦m
+g	java:S117ä"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âûä
+g	java:S117å"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ï×ø¹
+g	java:S117æ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œ­ô
+l	java:S117è"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œ¢úšûÿÿÿÿ
+g	java:S117ë"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ƒË®î
+g	java:S117©"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰¾Æ
+g	java:S117ª"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§ûÎÿ
+l	java:S117«"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æäşõøÿÿÿÿ
+l	java:S117¬"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ù€·íüÿÿÿÿ
+f	java:S117­"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø„Âi
+l	java:S117®"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œÓŠØøÿÿÿÿ
+g	java:S117¯"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ş«¬Œ
+g	java:S117°"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦­•
+g	java:S117±"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹Áú“
+g	java:S117²"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŠúÑ÷
+l	java:S117³"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿ³’½ûÿÿÿÿ
+l	java:S117´"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×ù…ùıÿÿÿÿ
