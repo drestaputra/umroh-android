@@ -16,12 +16,14 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
 import org.w3c.dom.Text;
 
 import java.util.List;
 
+import id.pritus.dresta.umrah.model.GeneralResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -47,20 +49,25 @@ public class FAQFragment extends Fragment {
         MyAPIService myAPIService = RetrofitClientInstance.getRetrofitInstance().create(MyAPIService.class);
 //        Integer id_pengguna = getArguments().getInt("position") + 1;
 
-        Call<List<Faq>> call = myAPIService.getFaq();
-        call.enqueue(new Callback<List<Faq>>() {
+        Call<GeneralResponse> call = myAPIService.getFaq();
+        call.enqueue(new Callback<GeneralResponse>() {
 
             @Override
-            public void onResponse(Call<List<Faq>> call, Response<List<Faq>> response) {
+            public void onResponse(Call<GeneralResponse> call, Response<GeneralResponse> response) {
                 if (response.body() != null) {
-                    populateGridView(response.body(),view);
+                    if (response.body().getStatus() == 200){
+                        if (response.body().getData() != null){
+                            List<Faq> faqList = response.body().getData(Faq.class);
+                            populateGridView(faqList,view);
+                        }
+                    }
 
                 }else{
 
                 }
             }
             @Override
-            public void onFailure(Call<List<Faq>> call, Throwable throwable) {
+            public void onFailure(Call<GeneralResponse> call, Throwable throwable) {
 
             }
         });
@@ -155,20 +162,10 @@ public class FAQFragment extends Fragment {
 
             expandButton.setText(faqs.get(position).getPertanyaan());
             TxvJawaban.setText(faqs.get(position).getJawaban());
-            int jumlah_karakter = faqs.get(position).getJawaban().length();
-            double tinggiTxv = (40* ceil(jumlah_karakter/50))+100;
-            TxvJawaban.getLayoutParams().height = (int) tinggiTxv;
             expandButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     expandableLayout.toggle(); // toggle expand and collapse
-//                    Integer v = expandableLayout.getVisibility();
-////        0,4,8 (visible,invisible,gone)
-//                    if (v==0){
-//                        expandableLayout.setVisibility(View.GONE);
-//                    }else{
-//                        expandableLayout.setVisibility(View.VISIBLE);
-//                    }
                 }
             });
 
@@ -188,8 +185,8 @@ public class FAQFragment extends Fragment {
         mGridView.setAdapter(adapter);
     }
     interface MyAPIService {
-        @GET("android/faq/tampil")
-        Call<List<Faq>> getFaq();
+        @GET("faq")
+        Call<GeneralResponse> getFaq();
     }
 
 

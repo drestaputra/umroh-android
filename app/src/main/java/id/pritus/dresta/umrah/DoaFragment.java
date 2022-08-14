@@ -19,6 +19,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+import id.pritus.dresta.umrah.model.GeneralResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -42,19 +43,20 @@ public class DoaFragment extends Fragment {
         MyAPIService myAPIService = RetrofitClientInstance.getRetrofitInstance().create(MyAPIService.class);
 //        Integer id_pengguna = getArguments().getInt("position") + 1;
 
-        Call<List<Doa>> call = myAPIService.getDoa();
-        call.enqueue(new Callback<List<Doa>>() {
+        Call<GeneralResponse> call = myAPIService.getDoa();
+        call.enqueue(new Callback<GeneralResponse>() {
 
             @Override
-            public void onResponse(Call<List<Doa>> call, Response<List<Doa>> response) {
+            public void onResponse(Call<GeneralResponse> call, Response<GeneralResponse> response) {
                 if (response.body() != null) {
-                    populateGridView(response.body(),view);
+                    List<Doa> doas = response.body().getData(Doa.class);
+                    populateGridView(doas,view);
                 }else{
 
                 }
             }
             @Override
-            public void onFailure(Call<List<Doa>> call, Throwable throwable) {
+            public void onFailure(Call<GeneralResponse> call, Throwable throwable) {
 
             }
         });
@@ -173,8 +175,8 @@ public class DoaFragment extends Fragment {
         mGridView.setAdapter(adapter);
     }
     interface MyAPIService {
-        @GET("android/doa/tampil")
-        Call<List<Doa>> getDoa();
+        @GET("doa")
+        Call<GeneralResponse> getDoa();
     }
 
 

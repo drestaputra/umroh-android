@@ -8,6 +8,8 @@ import android.os.Bundle;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
+
+import id.pritus.dresta.umrah.model.GeneralResponse;
 import id.pritus.dresta.umrah.slider.customize.CustomizeActivity;
 import id.pritus.dresta.umrah.slider.data.Customization;
 
@@ -80,20 +82,21 @@ public class DoaActivity extends AppCompatActivity {
             }
         });
         MyAPIService myAPIService = RetrofitClientInstance.getRetrofitInstance().create(MyAPIService.class);
-        Call<List<Doa>> call = myAPIService.getDoa();
-        call.enqueue(new Callback<List<Doa>>() {
+        Call<GeneralResponse> call = myAPIService.getDoa();
+        call.enqueue(new Callback<GeneralResponse>() {
             @Override
-            public void onResponse(Call<List<Doa>> call, Response<List<Doa>> response) {
+            public void onResponse(Call<GeneralResponse> call, Response<GeneralResponse> response) {
                 if (response.body() != null) {
                     mShimmerViewContainer.stopShimmerAnimation();
                     mShimmerViewContainer.setVisibility(View.GONE);
-                    init(response.body());
+                    List<Doa> doaList = response.body().getData(Doa.class);
+                    init(doaList);
                 }else{
 //                    textView.setText("Testimoni belum ada");
                 }
             }
             @Override
-            public void onFailure(Call<List<Doa>> call, Throwable throwable) {
+            public void onFailure(Call<GeneralResponse> call, Throwable throwable) {
                 mShimmerViewContainer.stopShimmerAnimation();
                 mShimmerViewContainer.setVisibility(View.GONE);
 //                Toast.makeText(, "", Toast.LENGTH_SHORT).show();
@@ -212,8 +215,8 @@ public class DoaActivity extends AppCompatActivity {
     };
 
     interface MyAPIService {
-        @GET("android/doa/tampil")
-        Call<List<Doa>> getDoa();
+        @GET("doa")
+        Call<GeneralResponse> getDoa();
     }
 
     /**
