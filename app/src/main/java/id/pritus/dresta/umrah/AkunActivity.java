@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import id.pritus.dresta.umrah.model.GeneralSingleResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -34,6 +35,7 @@ public class AkunActivity extends AppCompatActivity {
     private ShimmerFrameLayout mShimmerViewContainer;
     private PrefManager prefManager;
     private String id_user;
+    private String jenisUser;
 
 
     @Override
@@ -70,59 +72,60 @@ public class AkunActivity extends AppCompatActivity {
         MyAPIService myAPIService = RetrofitClientInstance.getRetrofitInstance().create(MyAPIService.class);
         if (prefManager.isJamaahLoggedIn()==true){
             id_user=prefManager.LoggedInIdJamaah();
+            jenisUser = "jamaah";
         }else if(prefManager.isAgenLoggedIn()==true){
             id_user=prefManager.LoggedInIdAgen();
+            jenisUser = "agen";
         }
 //        id_user = getIntent().getStringExtra("id_user");
-        Call<List<Akun>> call = myAPIService.getAkun(id_user);
-        call.enqueue(new Callback<List<Akun>>() {
+        Call<GeneralSingleResponse> call = myAPIService.getAkun(id_user, jenisUser);
+        call.enqueue(new Callback<GeneralSingleResponse>() {
             @Override
-            public void onResponse(Call<List<Akun>> call, Response<List<Akun>> response) {
+            public void onResponse(Call<GeneralSingleResponse> call, Response<GeneralSingleResponse> response) {
 
                 if (response.body() != null) {
                     mShimmerViewContainer.stopShimmerAnimation();
                     mShimmerViewContainer.setVisibility(View.GONE);
 //                    TextView TxvNama,TxvUsername,TxvEmail,TxvNoHp,TxvAlamat,TxvTglLahir,TxvTempatLahir,TxvPekerjaan;
-                    TxvNama.setText(response.body().get(0).getNama_lengkap());
-                    TxvUsername.setText(response.body().get(0).getUsername());
-                    TxvEmail.setText(response.body().get(0).getEmail());
-                    TxvNoHp.setText(response.body().get(0).getNo_hp());
-                    TxvAlamat.setText(response.body().get(0).getAlamat());
-                    TxvTglLahir.setText(response.body().get(0).getTgl_lahir());
-                    TxvTglLahir.setText(response.body().get(0).getTgl_lahir());
-                    TxvTempatLahir.setText(response.body().get(0).getTempat_lahir());
-                    TxvPekerjaan.setText(response.body().get(0).getPekerjaan());
-                    TxvJenisUser.setText(response.body().get(0).getJenis_user().toUpperCase());
-//                    TxvIduser.setText(response.body().get(0).getId_user());
-//                    Log.d("tesjenisuser", response.body().get(0).getJenis_user());
-                    if(prefManager.isAgenLoggedIn()==true){
-                        TxvJenisUser.setText(response.body().get(0).getJenis_user().toUpperCase()+" \n ID : "+id_user);
+                    Akun akun = response.body().getData(Akun.class);
+                    TxvNama.setText(akun.getNama_lengkap());
+                    TxvUsername.setText(akun.getUsername());
+                    TxvEmail.setText(akun.getEmail());
+                    TxvNoHp.setText(akun.getNo_hp());
+                    TxvAlamat.setText(akun.getAlamat());
+                    TxvTglLahir.setText(akun.getTgl_lahir());
+                    TxvTglLahir.setText(akun.getTgl_lahir());
+                    TxvTempatLahir.setText(akun.getTempat_lahir());
+                    TxvPekerjaan.setText(akun.getPekerjaan());
+                    TxvJenisUser.setText(akun.getJenis_user().toUpperCase());
+
+                    if(prefManager.isAgenLoggedIn()){
+                        TxvJenisUser.setText(akun.getJenis_user().toUpperCase()+" \n ID : "+id_user);
                     }
 
-                    Log.d("tesfoto", response.body().get(0).getFoto_ktpJamaah());
-                    if (response.body().get(0).getJenis_user()=="agen"){
-                        if(response.body().get(0).getFoto_ktpAgen() != null && response.body().get(0).getFoto_ktpAgen().length()>0)
+                    if (akun.getJenis_user().equalsIgnoreCase("agen")){
+                        if(akun.getFoto_ktpAgen() != null && akun.getFoto_ktpAgen().length()>0)
                         {
-                            Picasso.with(getApplicationContext()).load(response.body().get(0).getFoto_ktpAgen()).placeholder(R.color.greycustom2).into(ImvFotoKtp);
+                            Picasso.with(getApplicationContext()).load(akun.getFoto_ktpAgen()).placeholder(R.color.greycustom2).into(ImvFotoKtp);
                         }else {
                             Picasso.with(getApplicationContext()).load(R.color.greycustom2).into(ImvFotoKtp);
                         }
-                        if(response.body().get(0).getFotoAgen() != null && response.body().get(0).getFotoAgen().length()>0)
+                        if(akun.getFotoAgen() != null && akun.getFotoAgen().length()>0)
                         {
-                            Picasso.with(getApplicationContext()).load(response.body().get(0).getFoto_ktpAgen()).placeholder(R.color.greycustom2).into(ImvFoto);
+                            Picasso.with(getApplicationContext()).load(akun.getFoto_ktpAgen()).placeholder(R.color.greycustom2).into(ImvFoto);
                         }else {
                             Picasso.with(getApplicationContext()).load(R.color.greycustom2).into(ImvFoto);
                         }
                     }else{
-                        if(response.body().get(0).getFoto_ktpJamaah() != null && response.body().get(0).getFoto_ktpJamaah().length()>0)
+                        if(akun.getFoto_ktpJamaah() != null && akun.getFoto_ktpJamaah().length()>0)
                         {
-                            Picasso.with(getApplicationContext()).load(response.body().get(0).getFoto_ktpJamaah()).placeholder(R.color.greycustom2).into(ImvFotoKtp);
+                            Picasso.with(getApplicationContext()).load(akun.getFoto_ktpJamaah()).placeholder(R.color.greycustom2).into(ImvFotoKtp);
                         }else {
                             Picasso.with(getApplicationContext()).load(R.color.greycustom2).into(ImvFotoKtp);
                         }
-                        if(response.body().get(0).getFotoJamaah() != null && response.body().get(0).getFotoJamaah().length()>0)
+                        if(akun.getFotoJamaah() != null && akun.getFotoJamaah().length()>0)
                         {
-                            Picasso.with(getApplicationContext()).load(response.body().get(0).getFoto_ktpJamaah()).placeholder(R.color.greycustom2).into(ImvFoto);
+                            Picasso.with(getApplicationContext()).load(akun.getFoto_ktpJamaah()).placeholder(R.color.greycustom2).into(ImvFoto);
                         }else {
                             Picasso.with(getApplicationContext()).load(R.color.greycustom2).into(ImvFoto);
                         }
@@ -138,7 +141,7 @@ public class AkunActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<Akun>> call, Throwable t) {
+            public void onFailure(Call<GeneralSingleResponse> call, Throwable t) {
                 mShimmerViewContainer.stopShimmerAnimation();
                 mShimmerViewContainer.setVisibility(View.GONE);
 
@@ -148,8 +151,8 @@ public class AkunActivity extends AppCompatActivity {
 
     interface MyAPIService {
         @FormUrlEncoded
-        @POST("akun/detail")
-        Call<List<Akun>> getAkun(@Field("id_user") String id_user);
+        @POST("akun/profil")
+        Call<GeneralSingleResponse> getAkun(@Field("id_user") String id_user, @Field("jenis_user") String jenisUser);
     }
 
     class Akun {
@@ -234,19 +237,19 @@ public class AkunActivity extends AppCompatActivity {
         }
 
         public String getFoto_ktpAgen() {
-            return "https://admin.biroumrohcilacap.com/assets/img/agen/" + foto_ktp;
+            return foto_ktp;
         }
 
         public String getFoto_ktpJamaah() {
-            return "https://admin.biroumrohcilacap.com/assets/img/jamaah/" + foto_ktp;
+            return foto_ktp;
         }
 
         public String getFotoAgen() {
-            return "https://admin.biroumrohcilacap.com/assets/img/agen/" + foto;
+            return foto;
         }
 
         public String getFotoJamaah() {
-            return "https://admin.biroumrohcilacap.com/assets/img/jamaah/" + foto;
+            return foto;
         }
     }
 }

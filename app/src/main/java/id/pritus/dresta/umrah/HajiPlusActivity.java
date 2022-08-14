@@ -266,7 +266,7 @@ public class HajiPlusActivity extends AppCompatActivity {
 //        DecimalFormat formatter = new DecimalFormat("#.###.###");
         @SerializedName("id_produk")
         private String id_produk;
-        @SerializedName("nama_produk")
+        @SerializedName("nama_haji_plus")
         private String nama_produk;
         @SerializedName("biaya_sudah_termasuk")
         private String fasilitas;
@@ -282,7 +282,7 @@ public class HajiPlusActivity extends AppCompatActivity {
         private String harga_coret;
         @SerializedName("sisa_seat")
         private String sisa_seat;
-        @SerializedName("foto_produk")
+        @SerializedName("foto_haji_plus")
         private String foto_produk;
         @SerializedName("url_daftar")
         private String url_daftar;
