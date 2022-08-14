@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
@@ -30,6 +31,7 @@ import java.util.TimerTask;
 
 import id.pritus.dresta.umrah.AkunActivity;
 import id.pritus.dresta.umrah.ArtikelActivity;
+import id.pritus.dresta.umrah.HajiPlusActivity;
 import id.pritus.dresta.umrah.JadwalActivity;
 import id.pritus.dresta.umrah.LegalitasActivity;
 import id.pritus.dresta.umrah.LoginActivity;
@@ -63,6 +65,7 @@ public class BerandaFragment extends Fragment {
     private static int NUM_PAGES = 0;
     private PrefManager prefManager;
     private LinearLayout LbtProduk, LbtJadwal, LbtPanduan, LbtItin, LbtProgram, LbtLogin, LbtTestimoni, LbtSholat, LbtLegalitas, LbtAkun,LbtArtikel;
+    private CardView cvLogin;
     final Fragment fragmentd = new ProfilFragment();
 //    final Fragment fragmenta = new BerandaFragment();
 //    final FragmentManager fm2 = getFragmentManager();
@@ -96,6 +99,14 @@ public class BerandaFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent Ijadwal=new Intent(getActivity().getApplicationContext(), JadwalActivity.class);
+                startActivity(Ijadwal);
+            }
+        });
+        LinearLayout LbtHajiPlus = (LinearLayout) view.findViewById(R.id.LbtHajiPlus);
+        LbtHajiPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Ijadwal=new Intent(getActivity().getApplicationContext(), HajiPlusActivity.class);
                 startActivity(Ijadwal);
             }
         });
@@ -154,10 +165,20 @@ public class BerandaFragment extends Fragment {
 //
             }
         });
+        cvLogin = view.findViewById(R.id.cvLogin);
+        LinearLayout LbtLogout = view.findViewById(R.id.LbtLogout);
+        LbtLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                prefManager.logout();
+            }
+        });
         if (prefManager.isJamaahLoggedIn()==true||prefManager.isAgenLoggedIn()==true){
             LbtLogin.setVisibility(View.GONE);
+            LbtLogout.setVisibility(View.VISIBLE);
         }else{
-            LbtAkun.setVisibility(View.GONE);
+            LbtLogin.setVisibility(View.VISIBLE);
+            LbtLogout.setVisibility(View.GONE);
         }
         LbtTestimoni =  view.findViewById(R.id.LbtTestimoni);
         LbtTestimoni.setOnClickListener(new View.OnClickListener() {

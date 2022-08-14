@@ -18,8 +18,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <meta-data android:name="com.onesignal.NotificationOpened.DEFAULT" android:value="DISABLE" />
-        <activity android:name=".ManasikActivityNew"></activity>
+        <activity
+            android:name=".HajiPlusActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.onesignal.NotificationOpened.DEFAULT"
+            android:value="DISABLE" />
+
+        <activity android:name=".ManasikActivityNew" />
         <activity android:name=".LupassActivity" />
         <activity
             android:name=".DetailBeritaActivity"
@@ -104,7 +111,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MainActivity" />
         <activity android:name=".ToolsActivity" />
-        <activity android:name=".WelcomeActivity"
+        <activity
+            android:name=".WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

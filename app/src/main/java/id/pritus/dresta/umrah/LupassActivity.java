@@ -81,8 +81,8 @@ public class LupassActivity extends AppCompatActivity {
                             progressDoalog.dismiss();
                             Intent Ilogin = new Intent(LupassActivity.this,LoginActivity.class);
                             Ilogin.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            Toast.makeText(LupassActivity.this, "Silahkan cek email Anda untuk melakukan perubahan password", Toast.LENGTH_SHORT).show();
                             startActivity(Ilogin);
-//                            Toast.makeText(LupassActivity.this, response.body().get(0).getMsg(), Toast.LENGTH_SHORT).show();
                         }else{
                             progressDoalog.dismiss();
                             Toast.makeText(LupassActivity.this, response.body().getMsg(), Toast.LENGTH_SHORT).show();

@@ -19,6 +19,7 @@ import com.facebook.shimmer.ShimmerFrameLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+import id.pritus.dresta.umrah.model.GeneralResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -47,22 +48,26 @@ public class ManasikActivityNew extends AppCompatActivity {
         MyAPIService myAPIService = RetrofitClientInstance.getRetrofitInstance().create(MyAPIService.class);
 //        Integer id_pengguna = getArguments().getInt("position") + 1;
 
-        Call<List<ManasikActivity.Manasik>> call = myAPIService.getManasik();
-        call.enqueue(new Callback<List<ManasikActivity.Manasik>>() {
+        Call<GeneralResponse> call = myAPIService.getManasik();
+        call.enqueue(new Callback<GeneralResponse>() {
 
             @Override
-            public void onResponse(Call<List<ManasikActivity.Manasik>> call, Response<List<ManasikActivity.Manasik>> response) {
+            public void onResponse(Call<GeneralResponse> call, Response<GeneralResponse> response) {
+                mShimmerViewContainer.stopShimmerAnimation();
+                mShimmerViewContainer.setVisibility(View.GONE);
                 if (response.body() != null) {
-                    mShimmerViewContainer.stopShimmerAnimation();
-                    mShimmerViewContainer.setVisibility(View.GONE);
-                    populateGridView(response.body());
-                } else {
-                    textView.setText("Belum ada panduan");
+                    if (response.body().getStatus() == 200){
+                        if (response.body().getData() != null){
+                            populateGridView(response.body().getData(ProdukActivity.Produk.class));
+                        }else{
+                            textView.setText("Belum ada panduan");
+                        }
+                    }
                 }
             }
 
             @Override
-            public void onFailure(Call<List<ManasikActivity.Manasik>> call, Throwable throwable) {
+            public void onFailure(Call<GeneralResponse> call, Throwable throwable) {
                 mShimmerViewContainer.stopShimmerAnimation();
                 mShimmerViewContainer.setVisibility(View.GONE);
                 noconnlayout.setVisibility(View.VISIBLE);
@@ -81,22 +86,22 @@ public class ManasikActivityNew extends AppCompatActivity {
 
     class GridViewAdapter extends BaseAdapter {
 
-        private List<ManasikActivity.Manasik> manasiks;
+        private List<ProdukActivity.Produk> produks;
         private Context context;
 
-        public GridViewAdapter(Context context,List<ManasikActivity.Manasik> manasiks){
+        public GridViewAdapter(Context context,List<ProdukActivity.Produk> produks){
             this.context = context;
-            this.manasiks= manasiks;
+            this.produks= produks;
         }
 
         @Override
         public int getCount() {
-            return manasiks.size();
+            return produks.size();
         }
 
         @Override
         public Object getItem(int pos) {
-            return manasiks.get(pos);
+            return produks.get(pos);
         }
 
         @Override
@@ -111,6 +116,8 @@ public class ManasikActivityNew extends AppCompatActivity {
                 view= LayoutInflater.from(context).inflate(R.layout.grid_adapter_manasik_new,viewGroup,false);
             }
 
+            ProdukActivity.Produk prod = produks.get(position);
+            final String idProduk = prod.getId();
             TextView TxvJudul = view.findViewById(R.id.TxvJudul);
             Button btBaca= view.findViewById(R.id.btBaca);
             btBaca.setOnClickListener(new View.OnClickListener() {
@@ -118,21 +125,21 @@ public class ManasikActivityNew extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intentdoa = new Intent(ManasikActivityNew.this, ManasikActivity.class);
 //                    intentp.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    intentdoa.putExtra("posisi",String.valueOf(position));
+                    intentdoa.putExtra("posisi",String.valueOf(idProduk));
                     startActivity(intentdoa);
                 }
             });
 
-            final ManasikActivity.Manasik thisManasik= manasiks.get(position);
+            final ProdukActivity.Produk thisManasik= produks.get(position);
 
-            TxvJudul.setText(thisManasik.getJudul());
+            TxvJudul.setText(thisManasik.getName());
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intentdoa = new Intent(ManasikActivityNew.this, ManasikActivity.class);
 //                    intentp.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    intentdoa.putExtra("posisi",String.valueOf(position));
+                    intentdoa.putExtra("posisi",String.valueOf(idProduk));
                     startActivity(intentdoa);
                 }
             });
@@ -143,13 +150,13 @@ public class ManasikActivityNew extends AppCompatActivity {
 
     private GridViewAdapter adapter;
     private GridView mGridView;
-    private void populateGridView(List<ManasikActivity.Manasik> doaList) {
+    private void populateGridView(List<ProdukActivity.Produk> doaList) {
         mGridView = findViewById(R.id.GvManasik);
         adapter = new GridViewAdapter(this,doaList);
         mGridView.setAdapter(adapter);
     }
     interface MyAPIService {
-        @GET("android/manasik/tampil")
-        Call<List<ManasikActivity.Manasik>> getManasik();
+        @GET("produk/manasik")
+        Call<GeneralResponse> getManasik();
     }
 }

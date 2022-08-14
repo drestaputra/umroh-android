@@ -212,7 +212,8 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:orientation="vertical"
-                            android:padding="10dp">
+                            android:padding="10dp"
+                            android:visibility="gone">
 
                             <ImageView
                                 android:layout_width="match_parent"
@@ -228,6 +229,34 @@
                                 android:gravity="center_horizontal|center_vertical"
                                 android:lines="2"
                                 android:text="Legalitas"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="13sp" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/LbtHajiPlus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="2dp"
+                            android:orientation="vertical"
+                            android:padding="10dp"
+                            >
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="5dp"
+                                app:srcCompat="@drawable/ic_kabah" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_black"
+                                android:gravity="center_horizontal|center_vertical"
+                                android:lines="2"
+                                android:ellipsize="end"
+                                android:text="Haji Plus"
                                 android:textColor="@color/colorPrimaryDark"
                                 android:textSize="13sp" />
 
@@ -276,6 +305,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/cvLogin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="6dp"
@@ -312,6 +342,34 @@
                                 android:textColor="@color/colorPrimaryDark"
                                 android:textSize="13sp" />
                         </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/LbtLogout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="2dp"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            android:padding="10dp">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="5dp"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/logout" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_black"
+                                android:gravity="center_horizontal|center_vertical"
+                                android:lines="2"
+                                android:text="Logout"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
 
                         <LinearLayout
                             android:id="@+id/LbtAkun"

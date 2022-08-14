@@ -8,6 +8,8 @@ import android.os.Bundle;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
+
+import id.pritus.dresta.umrah.model.GeneralResponse;
 import id.pritus.dresta.umrah.slider.customize.CustomizeActivity;
 import id.pritus.dresta.umrah.slider.data.Customization;
 
@@ -24,6 +26,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.facebook.shimmer.ShimmerFrameLayout;
@@ -40,7 +43,10 @@ import java.util.TimerTask;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 
 public class ManasikActivity extends AppCompatActivity {
 
@@ -58,6 +64,7 @@ public class ManasikActivity extends AppCompatActivity {
     private static int NUM_PAGES = 0;
     private Customization customization;
     private ShimmerFrameLayout mShimmerViewContainer;
+    private String idProduk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,28 +82,34 @@ public class ManasikActivity extends AppCompatActivity {
         btBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent Iback=new Intent(ManasikActivity.this,MainActivity.class);
-                startActivity(Iback);
+                finish();
             }
         });
         MyAPIService myAPIService = RetrofitClientInstance.getRetrofitInstance().create(MyAPIService.class);
+        idProduk = getIntent().getStringExtra("posisi");
 
-        Call<List<Manasik>> call = myAPIService.getManasik();
-        call.enqueue(new Callback<List<Manasik>>() {
+        if (idProduk == null){
+            finish();
+        }
+
+        Call<GeneralResponse> call = myAPIService.getManasik(idProduk);
+        call.enqueue(new Callback<GeneralResponse>() {
             @Override
-            public void onResponse(Call<List<Manasik>> call, Response<List<Manasik>> response) {
+            public void onResponse(Call<GeneralResponse> call, Response<GeneralResponse> response) {
+                mShimmerViewContainer.stopShimmerAnimation();
+                mShimmerViewContainer.setVisibility(View.GONE);
                 if (response.body() != null) {
-                    mShimmerViewContainer.stopShimmerAnimation();
-                    mShimmerViewContainer.setVisibility(View.GONE);
-                    init(response.body());
+                    if (response.body().getStatus() == 200){
+                        if (response.body().getData() !=null){
+                            init(response.body().getData(Manasik.class));
+                        }
+                    }
                 }else{
-//                    textView.setText("Testimoni belum ada");
-                    mShimmerViewContainer.stopShimmerAnimation();
-                    mShimmerViewContainer.setVisibility(View.GONE);
+                    Toast.makeText(ManasikActivity.this, "Belum ada data", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
-            public void onFailure(Call<List<Manasik>> call, Throwable throwable) {
+            public void onFailure(Call<GeneralResponse> call, Throwable throwable) {
 //                Toast.makeText(, "", Toast.LENGTH_SHORT).show();
                 mShimmerViewContainer.stopShimmerAnimation();
                 mShimmerViewContainer.setVisibility(View.GONE);
@@ -107,8 +120,8 @@ public class ManasikActivity extends AppCompatActivity {
 
         mPager = (ViewPager) findViewById(R.id.view_pager);
         mPager.setAdapter(new ManasikAdapter(this, manasikListn));
-        Integer posisi=Integer.valueOf(getIntent().getStringExtra("posisi"));
-        mPager.setCurrentItem(posisi);
+
+        mPager.setCurrentItem(0);
         mPager.addOnPageChangeListener(viewPagerPageChangeListener);
         jumlahmanasik=manasikListn.size();
         btnNext.setOnClickListener(new View.OnClickListener() {
@@ -222,8 +235,9 @@ public class ManasikActivity extends AppCompatActivity {
     };
 
     interface MyAPIService {
-        @GET("android/manasik/tampil")
-        Call<List<Manasik>> getManasik();
+        @FormUrlEncoded
+        @POST("manasik/get_by_produk")
+        Call<GeneralResponse> getManasik(@Field("id_produk") String id_produk);
     }
 
     /**
@@ -289,12 +303,12 @@ public class ManasikActivity extends AppCompatActivity {
 
     }
 
-    class Manasik{
+    public class Manasik{
         @SerializedName("id_manasik")
         private String id_manasik;
-        @SerializedName("judul")
+        @SerializedName("judul_manasik")
         private String judul;
-        @SerializedName("isi")
+        @SerializedName("isi_manasik")
         private String isi;
 
         public Manasik(String id_manasik,String judul,String isi){
