@@ -6,11 +6,13 @@ import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +20,11 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
+import id.pritus.dresta.umrah.model.GeneralResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,20 +47,20 @@ public class JadwalActivity extends AppCompatActivity {
         MyAPIService myAPIService = RetrofitClientInstance.getRetrofitInstance().create(MyAPIService.class);
 //        Integer id_pengguna = getArguments().getInt("position") + 1;
 
-        Call<List<Jadwal>> call = myAPIService.getJadwal();
-        call.enqueue(new Callback<List<Jadwal>>() {
+        Call<GeneralResponse> call = myAPIService.getJadwal();
+        call.enqueue(new Callback<GeneralResponse>() {
 
             @Override
-            public void onResponse(Call<List<Jadwal>> call, Response<List<Jadwal>> response) {
+            public void onResponse(Call<GeneralResponse> call, Response<GeneralResponse> response) {
                 if (response.body() != null) {
-                    populateGridView(response.body());
+                    populateGridView(response.body().getData(Jadwal.class));
                 }else{
 
                 }
             }
             @Override
-            public void onFailure(Call<List<Jadwal>> call, Throwable throwable) {
-
+            public void onFailure(Call<GeneralResponse> call, Throwable throwable) {
+                Toast.makeText(JadwalActivity.this, "Belum ada data untuk saaat ini", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -115,8 +119,8 @@ public class JadwalActivity extends AppCompatActivity {
         mGridView.setAdapter(adapter);
     }
     interface MyAPIService {
-        @GET("android/jadwal/tampil")
-        Call<List<Jadwal>> getJadwal();
+        @GET("jadwal")
+        Call<GeneralResponse> getJadwal();
     }
     class Jadwal{
         @SerializedName("id_jadwal")

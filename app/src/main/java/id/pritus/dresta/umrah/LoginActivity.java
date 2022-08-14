@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -163,7 +164,7 @@ public class LoginActivity extends AppCompatActivity {
                     progressDoalog.dismiss();
 
                     Datapengguna datapengguna = response.body().getData(Datapengguna.class);
-                    if(response.body().getStatus().equals("200")){
+                    if(response.body().getStatus() == 200){
                         //get username
                         String user = datapengguna.getUsername();
                         String id_user;
@@ -180,7 +181,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     }else{
                         progressDoalog.dismiss();
-                        Toast.makeText(LoginActivity.this,datapengguna.getPesan(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this,response.body().getMsg(),Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -198,19 +199,15 @@ public class LoginActivity extends AppCompatActivity {
         private String id_agen;
         @SerializedName("id_jamaah")
         private String id_jamaah;
-        @SerializedName("status")
-        private  String status;
         @SerializedName("username")
         private String username;
-        @SerializedName("pesan")
-        private String pesan;
-        public Datapengguna(String id_agen,String id_jamaah,String status,String username, String pesan) {
-            this.id_agen=id_agen;
-            this.id_jamaah=id_jamaah;
-            this.status= status;
-            this.username= username;
-            this.pesan= pesan;
+
+        public Datapengguna(String id_agen, String id_jamaah, String username) {
+            this.id_agen = id_agen;
+            this.id_jamaah = id_jamaah;
+            this.username = username;
         }
+
         public String getId_jamaah() {
             return id_jamaah;
         }
@@ -224,23 +221,11 @@ public class LoginActivity extends AppCompatActivity {
         public void setId_agen(String id_agen) {
             this.id_agen = id_agen;
         }
-        public String getStatus() {
-            return status;
-        }
-        public void setStatus(String status) {
-            this.status = status;
-        }
         public String getUsername() {
             return username;
         }
         public void setUsername(String username) {
             this.username = username;
-        }
-        public void setPesan(String pesan) {
-            this.pesan = pesan;
-        }
-        public String getPesan() {
-            return pesan;
         }
     }
 

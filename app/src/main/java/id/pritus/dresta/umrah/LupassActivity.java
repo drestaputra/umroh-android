@@ -7,16 +7,19 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+import id.pritus.dresta.umrah.model.GeneralResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,8 +35,8 @@ public class LupassActivity extends AppCompatActivity {
 
     interface APIService{
         @FormUrlEncoded
-        @POST("/android/login/lupass")
-        Call<List<LupassResponse>> getDatapengguna(@Field("username") String username);
+        @POST("login/forget_password")
+        Call<GeneralResponse> forgetPassword(@Field("email") String email);
     }
 
     @Override
@@ -41,6 +44,7 @@ public class LupassActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lupass);
         TxvKembali = findViewById(R.id.TxvKembali);
+        EtEmail = findViewById(R.id.EtEmail);
         TxvKembali.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +59,9 @@ public class LupassActivity extends AppCompatActivity {
         BtKirim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (EtEmail.getText().length() == 0){
+                    return;
+                }
                 final ProgressDialog progressDoalog;
                 progressDoalog = new ProgressDialog(LupassActivity.this);
                 progressDoalog.setMax(100);
@@ -63,14 +70,14 @@ public class LupassActivity extends AppCompatActivity {
                 progressDoalog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFD4D9D0")));
                 progressDoalog.show();
 
-                EtEmail = findViewById(R.id.EtEmail);
+
                 String EtEmails = EtEmail.getText().toString();
                 APIService myAPIService = RetrofitClientInstance.getRetrofitInstance().create(APIService.class);
-                Call<List<LupassResponse>> call = myAPIService.getDatapengguna(EtEmails);
-                call.enqueue(new Callback<List<LupassResponse>>() {
+                Call<GeneralResponse> call = myAPIService.forgetPassword(EtEmails);
+                call.enqueue(new Callback<GeneralResponse>() {
                     @Override
-                    public void onResponse(Call<List<LupassResponse>> call, Response<List<LupassResponse>> response) {
-                        if (response.body().get(0).getStatus()==200){
+                    public void onResponse(Call<GeneralResponse> call, Response<GeneralResponse> response) {
+                        if (response.body().getStatus()==200){
                             progressDoalog.dismiss();
                             Intent Ilogin = new Intent(LupassActivity.this,LoginActivity.class);
                             Ilogin.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -78,7 +85,7 @@ public class LupassActivity extends AppCompatActivity {
 //                            Toast.makeText(LupassActivity.this, response.body().get(0).getMsg(), Toast.LENGTH_SHORT).show();
                         }else{
                             progressDoalog.dismiss();
-                            Toast.makeText(LupassActivity.this, response.body().get(0).getMsg(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LupassActivity.this, response.body().getMsg(), Toast.LENGTH_SHORT).show();
                             Intent Ilogin = new Intent(LupassActivity.this,LoginActivity.class);
                             Ilogin.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(Ilogin);
@@ -86,7 +93,7 @@ public class LupassActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<List<LupassResponse>> call, Throwable t) {
+                    public void onFailure(Call<GeneralResponse> call, Throwable t) {
                         progressDoalog.dismiss();
                         Toast.makeText(LupassActivity.this, "Kesalah koneksi, silahkan periksa jaringan", Toast.LENGTH_SHORT).show();
                     }
@@ -95,31 +102,5 @@ public class LupassActivity extends AppCompatActivity {
             }
         });
     }
-    class LupassResponse{
-        @SerializedName("status")
-        Integer status;
-        @SerializedName("msg")
-        String msg;
 
-        public LupassResponse(Integer status, String msg) {
-            this.status = status;
-            this.msg = msg;
-        }
-
-        public Integer getStatus() {
-            return status;
-        }
-
-        public void setStatus(Integer status) {
-            this.status = status;
-        }
-
-        public String getMsg() {
-            return msg;
-        }
-
-        public void setMsg(String msg) {
-            this.msg = msg;
-        }
-    }
 }
