@@ -49,6 +49,7 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 
+import id.pritus.dresta.umrah.model.GeneralSingleResponse;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -107,8 +108,8 @@ public class RegisterJamaahActivity extends AppCompatActivity implements
 
     interface MyAPIService {
         @Multipart
-        @POST("/android/daftar/jamaah")
-        Call<List<DaftarJamaah>> getDaftarjamaah
+        @POST("daftar/jamaah")
+        Call<GeneralSingleResponse> getDaftarjamaah
                 (@Part("nama_jamaah") RequestBody description,
                  @Part("notif_app_id") RequestBody notif_app_id,
                 @Part("tempat_lahir") RequestBody tempat_lahir,
@@ -366,15 +367,15 @@ public class RegisterJamaahActivity extends AppCompatActivity implements
         RequestBody password= RequestBody.create(okhttp3.MultipartBody.FORM, EtPasswords);
 
         MyAPIService myAPIService = RetrofitClientInstance.getRetrofitInstance().create(MyAPIService.class);
-        Call<List<DaftarJamaah>> call = myAPIService.getDaftarjamaah(nama_jamaah,notif_ap_id,tempat_lahir,tanggal_lahir,jenis_kelamin
+        Call<GeneralSingleResponse> call = myAPIService.getDaftarjamaah(nama_jamaah,notif_ap_id,tempat_lahir,tanggal_lahir,jenis_kelamin
                 ,alamat,no_hp,pekerjaan,email,no_rekening,bank,username,password,body,body2);
-        call.enqueue(new Callback<List<DaftarJamaah>>() {
+        call.enqueue(new Callback<GeneralSingleResponse>() {
 
             @Override
-            public void onResponse(Call<List<DaftarJamaah>> call, Response<List<DaftarJamaah>> response) {
+            public void onResponse(Call<GeneralSingleResponse> call, Response<GeneralSingleResponse> response) {
 
                 if (response.body() != null) {
-                    if (response.body().get(0).getError()==null|| response.body().get(0).getIsSuccess().equals("sukses")){
+                    if (response.body().getStatus() == 200){
                         onSignupSuccess();
                         progressDialog.dismiss();
                         Intent intent1 = new Intent(RegisterJamaahActivity.this, LoginActivity.class);
@@ -385,13 +386,13 @@ public class RegisterJamaahActivity extends AppCompatActivity implements
                     else{
                         progressDialog.dismiss();
                         onSignupFailed();
-                        Toast.makeText(RegisterJamaahActivity.this, response.body().get(0).getError(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterJamaahActivity.this, response.body().getMsg(), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
 
             @Override
-            public void onFailure(Call<List<DaftarJamaah>> call, Throwable throwable) {
+            public void onFailure(Call<GeneralSingleResponse> call, Throwable throwable) {
                 onSignupFailed();
                 progressDialog.dismiss();
                 Toast.makeText(RegisterJamaahActivity.this, "Periksa Jaringan", Toast.LENGTH_LONG).show();

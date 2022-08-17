@@ -48,6 +48,8 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 
+import id.pritus.dresta.umrah.model.GeneralResponse;
+import id.pritus.dresta.umrah.model.GeneralSingleResponse;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -131,8 +133,8 @@ public class RegisterActivity extends AppCompatActivity
 
     interface MyAPIService {
         @Multipart
-        @POST("/android/daftar/agen")
-        Call<List<DaftarAgen>> getDaftaragen
+        @POST("daftar/agen")
+        Call<GeneralSingleResponse> getDaftaragen
                 (@Part("nama_agen") RequestBody description,
                  @Part("notif_app_id") RequestBody notif_app_id,
                  @Part("tempat_lahir") RequestBody tempat_lahir,
@@ -361,15 +363,15 @@ public class RegisterActivity extends AppCompatActivity
 
         MyAPIService myAPIService = RetrofitClientInstance.getRetrofitInstance().create(MyAPIService.class);
 
-        Call<List<DaftarAgen>> call = myAPIService.getDaftaragen(nama_agen,notif_ap_id,tempat_lahir,tanggal_lahir,jenis_kelamin
+        Call<GeneralSingleResponse> call = myAPIService.getDaftaragen(nama_agen,notif_ap_id,tempat_lahir,tanggal_lahir,jenis_kelamin
                 ,alamat,no_hp,pekerjaan,email,no_rekening,bank,username,password,body,body2);
-        call.enqueue(new Callback<List<DaftarAgen>>() {
+        call.enqueue(new Callback<GeneralSingleResponse>() {
 
             @Override
-            public void onResponse(Call<List<DaftarAgen>> call, Response<List<DaftarAgen>> response) {
+            public void onResponse(Call<GeneralSingleResponse> call, Response<GeneralSingleResponse> response) {
 
                 if (response.body() != null) {
-                    if (response.body().get(0).getError()==null || response.body().get(0).isSuccess.equals("sukses")){
+                    if (response.body().getStatus() == 200){
                         onSignupSuccess();
 
                         progressDialog.dismiss();
@@ -377,17 +379,16 @@ public class RegisterActivity extends AppCompatActivity
                         intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         Toast.makeText(RegisterActivity.this, "Berhasil Mendaftar Silahkan Login", Toast.LENGTH_LONG).show();
                         startActivity(intent1);
-                    }
-                    else{
+                    } else{
                         progressDialog.dismiss();
                         onSignupFailed();
-                        Toast.makeText(RegisterActivity.this, response.body().get(0).getError(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, response.body().getMsg(), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
 
             @Override
-            public void onFailure(Call<List<DaftarAgen>> call, Throwable throwable) {
+            public void onFailure(Call<GeneralSingleResponse> call, Throwable throwable) {
                 onSignupFailed();
                 progressDialog.dismiss();
                 Log.d("onfailure", String.valueOf(throwable));
