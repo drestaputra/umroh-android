@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" /> <!-- <uses-permission android:name="android.permission.CALL_PHONE" /> -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    
 
     <application
         android:allowBackup="true"
@@ -21,96 +22,165 @@
         <activity
             android:name=".HajiPlusActivity"
             android:exported="false" />
-
         <meta-data
             android:name="com.onesignal.NotificationOpened.DEFAULT"
+            android:exported="false"
             android:value="DISABLE" />
 
-        <activity android:name=".ManasikActivityNew" />
-        <activity android:name=".LupassActivity" />
+        <receiver android:name="com.onesignal.BootUpReceiver"  android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.onesignal.UpgradeReceiver" android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.onesignal.GcmBroadcastReceiver" android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+        <activity
+            android:name="com.onesignal.NotificationOpenedActivityHMS"
+            android:exported="true"/>
+        <activity
+            android:name=".ManasikActivityNew"
+            android:exported="false"/>
+        <activity
+            android:name=".LupassActivity"
+            android:exported="false"/>
         <activity
             android:name=".DetailBeritaActivity"
+            android:exported="false"
             android:label="@string/title_activity_detail_berita"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".ArtikelActivity"
+            android:exported="false"
             android:label="@string/title_activity_artikel"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".RiwayatActivity"
+            android:exported="false"
             android:label="@string/title_activity_riwayat"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".AboutActivity"
+            android:exported="false"
             android:label="@string/title_activity_about"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".AkunActivity"
+            android:exported="false"
             android:label="@string/title_activity_akun"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".JadwalActivity"
+            android:exported="false"
             android:label="@string/title_activity_jadwal"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".DetailProgramActivity"
+            android:exported="false"
             android:label="@string/title_activity_detail_program"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".ProgramActivity"
+            android:exported="false"
             android:label="@string/title_activity_program"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".DetailItineraryActivity"
+            android:exported="false"
             android:label="@string/title_activity_detail_itinerary"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".ItineraryActivity"
+            android:exported="false"
             android:label="@string/title_activity_itinerary"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".TesActivity"
+            android:exported="false"
             android:label="@string/title_activity_tes"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".RegisterJamaahActivity"
+            android:exported="false"
             android:label="@string/title_activity_register_jamaah"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".PilihActivity"
+            android:exported="false"
             android:label="@string/title_activity_pilih"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".WActivity"
+            android:exported="false"
             android:label="@string/title_activity_w"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".DoaActivity"
+            android:exported="false"
             android:label="@string/title_activity_doa"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".ManasikActivity"
+            android:exported="false"
             android:label="@string/title_activity_manasik"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".LegalitasActivity"
+            android:exported="false"
             android:label="@string/title_activity_legalitas"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".WebActivity" />
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity
+            android:name=".WebActivity"
+            android:exported="false"/>
         <activity
             android:name=".DetailActivity"
+            android:exported="false"
             android:label="@string/title_activity_detail"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".ProdukActivity"
+            android:exported="false"
             android:label="@string/title_activity_produk"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".salat.SalatActivity"
+            android:exported="false"
             android:label="@string/title_activity_salat"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".ToolsActivity" />
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".ToolsActivity"
+            android:exported="false"/>
         <activity
             android:name=".WelcomeActivity"
             android:exported="true">
@@ -123,15 +193,22 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="Login" />
-        <activity android:name=".slider.customize.CustomizeActivity" />
+            android:exported="false"
+            android:label="Login"
+            />
+        <activity
+            android:name=".slider.customize.CustomizeActivity"
+            android:exported="false"/>
         <activity
             android:name=".RegisterActivity"
-            android:label="Register" />
-        <activity android:name=".TestimoniActivity" />
-
+            android:label="Register"
+            android:exported="false"/>
+        <activity
+            android:name=".TestimoniActivity"
+            android:exported="false"/>
         <meta-data
             android:name="preloaded_fonts"
+            android:exported="false"
             android:resource="@array/preloaded_fonts" />
     </application>
 
